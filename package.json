@@ -1,0 +1,33 @@
+{
+  "name": "inventory-application",
+  "version": "1.0.0",
+  "description": "A Node/Express inventory management app for all things produce.",
+  "keywords": [
+    "inventory",
+    "express",
+    "postgresql"
+  ],
+  "homepage": "https://github.com/vins123sinned/inventory-application#readme",
+  "bugs": {
+    "url": "https://github.com/vins123sinned/inventory-application/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vins123sinned/inventory-application.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
+}
