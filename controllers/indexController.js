@@ -1,9 +1,9 @@
 const getHomepage = (req, res) => {
-  res.send("Homepage");
+  res.render("layout");
 };
 
 const getAboutPage = (req, res) => {
-  res.send("About");
+  res.send("layout");
 };
 
 export { getHomepage, getAboutPage };
