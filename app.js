@@ -7,6 +7,9 @@ import { produceRouter } from "./routes/produceRouter.js";
 
 const app = express();
 
+const assetsPath = path.join(import.meta.dirname, "public");
+app.use(express.static(assetsPath));
+
 app.set("views", path.join(import.meta.dirname, "views"));
 app.set("view engine", "ejs");
 
