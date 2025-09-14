@@ -1,0 +1,66 @@
+header,
+.header-links {
+  display: flex;
+}
+
+header {
+  position: relative;
+  height: 3rem;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+}
+
+.header-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 3rem);
+  background-color: #7f4f24;
+  z-index: 999;
+}
+
+.header-links {
+  flex-direction: column;
+}
+
+.logo {
+  font-family: "fccorrentino-bold";
+  font-size: 3rem;
+}
+
+.menu-button {
+  background-color: transparent;
+  border: none;
+}
+
+.menu-button:hover {
+  cursor: pointer;
+  background-color: #efefef;
+  border-radius: 5px;
+}
+
+.menu-icon {
+  font-size: 2.5rem !important;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (min-width: 780px) {
+  .header-dropdown-container {
+    display: none;
+  }
+
+  .header-links a {
+    font-size: 1.25rem;
+    color: #000;
+    text-decoration: none;
+    margin-right: clamp(1rem, 2vw, 3rem);
+  }
+
+  .menu-button {
+    display: none;
+  }
+}
