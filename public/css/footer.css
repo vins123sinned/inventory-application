@@ -1,0 +1,42 @@
+footer {
+  display: grid;
+  background-color: #c5deb5;
+  color: #100007;
+  padding: 1rem 1.5rem;
+}
+
+footer .slogan,
+footer .logo {
+  font-size: 4rem;
+}
+
+footer .slogan {
+  margin: 0.5rem 0;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.social-links ul {
+  display: flex;
+}
+
+.social-links li {
+  margin-right: 0.75rem;
+}
+
+.footer-link-list {
+  font-size: 1.25rem;
+}
+
+.links-heading {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.footer-link-list li {
+  margin-bottom: 0.5rem;
+}
