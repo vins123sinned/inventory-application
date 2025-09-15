@@ -1,8 +1,17 @@
 footer {
   display: grid;
+  grid-template-areas:
+    "social"
+    "company"
+    "footer-links-one"
+    "footer-links-two";
   background-color: #c5deb5;
   color: #100007;
-  padding: 1rem 1.5rem;
+  padding: 2rem 1.5rem 0 1.5rem;
+}
+
+.company {
+  grid-area: company;
 }
 
 footer .slogan,
@@ -11,19 +20,24 @@ footer .logo {
 }
 
 footer .slogan {
-  margin: 0.5rem 0;
+  margin: 3rem 0 0.5rem 0;
 }
 
 .tagline {
   font-size: 1.5rem;
-  margin-top: 0;
+  margin: 0 0 1rem 0;
+}
+
+.social-links {
+  grid-area: social;
+  justify-self: end;
 }
 
 .social-links ul {
   display: flex;
 }
 
-.social-links li {
+.social-links li:not(:last-child) {
   margin-right: 0.75rem;
 }
 
@@ -39,4 +53,42 @@ footer .slogan {
 
 .footer-link-list li {
   margin-bottom: 0.5rem;
+}
+
+.footer-link-list a {
+  position: relative;
+  text-decoration: none;
+  color: #000;
+}
+
+.footer-link-list a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  transition: width 0.25s ease;
+}
+
+.footer-link-list a:hover::after {
+  width: 100%;
+}
+
+.footer-links-one {
+  grid-area: footer-links-one;
+}
+
+.footer-links-two {
+  grid-area: footer-links-two;
+}
+
+.copyright {
+  justify-self: center;
+  margin-top: 1rem;
+}
+
+.copyright-tagline {
+  display: none;
 }
