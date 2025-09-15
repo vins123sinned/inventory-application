@@ -36,7 +36,6 @@ header {
 
   transition:
     opacity 0.25s ease,
-    visibility 0.25s ease,
     transform 0.25s ease;
 }
 
@@ -112,10 +111,6 @@ header {
 }
 
 @media (min-width: 780px) {
-  .header-dropdown-container {
-    display: none;
-  }
-
   .header-nav {
     position: static;
     background-color: transparent;
