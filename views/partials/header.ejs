@@ -1,6 +1,6 @@
 <header>
-  <a class="logo">Fruitta</a>
-  <nav class="header-nav hidden">
+  <a href="/" class="logo">Fruitta</a>
+  <nav class="header-nav" id="dropdown">
     <ul class="header-links">
       <li><a href="#">Shop</a></li>
       <li><a href="#">Recipes</a></li>
@@ -9,7 +9,7 @@
     </ul>
   </nav>
   <div class="header-dropdown-container">
-    <button class="menu-button">
+    <button class="menu-button" aria-expanded="false" aria-controls="dropdown">
       <span class="material-symbols-outlined menu-icon">
         menu
       </span>
