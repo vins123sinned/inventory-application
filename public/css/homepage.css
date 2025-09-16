@@ -1,7 +1,13 @@
 .hero {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1.5rem;
+
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  height: calc(100vh - 5rem);
+  padding: 0 1.5rem;
 }
 
 .hero::before {
@@ -11,18 +17,57 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("/images/hero/hero-default.jpg");
-  background-image: image-set(
-    url("/images/hero/hero-1000.webp") 1x,
-    url("/images/hero/hero-2000.webp") 2x
-  );
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)),
+    url("/images/hero/hero-default.jpg");
   background-position: center;
   background-size: cover;
   z-index: -1;
 }
 
+.hero h1,
+.hero p {
+  margin: 0;
+}
+
+.hero h1 {
+  font-family: "playfairdisplay-bold", "Times New Roman", Times, serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+}
+
+.call-to-action {
+  max-width: 18rem;
+}
+
+.call-to-action p {
+  font-size: 1.25rem;
+  max-width: 25rem;
+}
+
+.call-to-action button {
+  font-size: 1.05rem;
+  border: none;
+  border-radius: 5px;
+  width: fit-content;
+  padding: 1.1rem 2rem;
+  margin: 2rem 0 3rem 0;
+  transition: background-color 0.25s ease;
+}
+
+.call-to-action button:hover {
+  cursor: pointer;
+  background-color: #dadada;
+}
+
 @media (max-width: 600px) {
   .hero::before {
     background-position: center bottom;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    flex-direction: row;
+    align-items: end;
   }
 }
