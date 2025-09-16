@@ -4,7 +4,8 @@ footer {
     "social"
     "company"
     "footer-links-one"
-    "footer-links-two";
+    "footer-links-two"
+    "copyright";
   background-color: #c5deb5;
   color: #100007;
   padding: 2rem 1.5rem 0 1.5rem;
@@ -21,6 +22,10 @@ footer .logo {
 
 footer .slogan {
   margin: 3rem 0 0.5rem 0;
+}
+
+footer .logo {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .tagline {
@@ -85,10 +90,53 @@ footer .slogan {
 }
 
 .copyright {
+  grid-area: copyright;
   justify-self: center;
   margin-top: 1rem;
 }
 
 .copyright-tagline {
   display: none;
+}
+
+@media (min-width: 600px) {
+  footer {
+    grid-template-areas:
+      ". social"
+      "company company"
+      "footer-links-one footer-links-two"
+      "copyright copyright";
+  }
+
+  .company {
+    margin: 2rem 0;
+  }
+
+  .copyright {
+    justify-self: start;
+    margin-top: 3rem;
+  }
+
+  .copyright-tagline {
+    display: inline;
+  }
+}
+
+@media (min-width: 1200px) {
+  footer {
+    grid-template-areas:
+      "company footer-links-one footer-links-two"
+      "social footer-links-one footer-links-two"
+      "copyright copyright copyright";
+    gap: 2rem;
+    padding: 5rem 2rem 0 2rem;
+  }
+
+  footer .slogan {
+    margin: 0;
+  }
+
+  .social-links {
+    justify-self: start;
+  }
 }
