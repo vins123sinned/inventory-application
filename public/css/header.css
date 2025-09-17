@@ -1,9 +1,9 @@
-header,
+.main-header,
 .header-links {
   display: flex;
 }
 
-header {
+.main-header {
   position: relative;
   color: #fff;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);

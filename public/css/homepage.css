@@ -59,13 +59,15 @@
 }
 
 /* Why Fruitta */
-.why-fruitta {
+.why-fruitta,
+.testimonials {
   max-width: 85rem;
   padding: 0 clamp(1rem, 6vw, 3rem);
   margin: auto;
 }
 
-.why-fruitta h2 {
+.why-fruitta h2,
+.testimonials h2 {
   text-align: center;
   margin: 3rem 0;
 }
@@ -83,6 +85,37 @@
   transform: rotateZ(5deg);
 }
 
+/* Testimonials */
+.testimonials h2 {
+  margin-top: 6rem;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, 1fr);
+  gap: 1.5rem;
+  margin-bottom: clamp(3rem, 12vw, 8rem);
+}
+
+.testimonial {
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+  padding: 1.25rem;
+}
+
+.testimonial h3 {
+  margin: 0;
+}
+
+.testimonial .title {
+  color: #9b9b9b;
+  margin-top: 0.5rem;
+}
+
+.testimonial .content {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
 @media (max-width: 600px) {
   .hero::before {
     background-position: center bottom;
@@ -94,6 +127,10 @@
     max-width: 80vw;
     max-height: 30rem;
     transform: rotateZ(1deg);
+  }
+
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
