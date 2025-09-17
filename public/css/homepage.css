@@ -31,7 +31,6 @@
 }
 
 .hero h1 {
-  font-family: "playfairdisplay-bold", "Times New Roman", Times, serif;
   font-size: clamp(4rem, 10vw, 8rem);
 }
 
@@ -59,9 +58,42 @@
   background-color: #dadada;
 }
 
+/* Why Fruitta */
+.why-fruitta {
+  max-width: 85rem;
+  padding: 0 clamp(1rem, 6vw, 3rem);
+  margin: auto;
+}
+
+.why-fruitta h2 {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.why-fruitta p {
+  text-align: center;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+}
+
+.why-fruitta img {
+  display: block;
+  border-radius: 5px;
+  box-shadow: 0px 0px 28px 6px rgba(207, 235, 183, 0.37);
+  margin: 3rem auto;
+  transform: rotateZ(5deg);
+}
+
 @media (max-width: 600px) {
   .hero::before {
     background-position: center bottom;
+  }
+}
+
+@media (min-width: 600px) {
+  .why-fruitta img {
+    max-width: 80vw;
+    max-height: 30rem;
+    transform: rotateZ(1deg);
   }
 }
 
