@@ -1,5 +1,13 @@
-const getAllCategories = (req, res) => {
-  res.send("All categories");
+import { getAllCategories } from "../db/queries.js";
+
+const getCategoriesPage = async (req, res) => {
+  const categories = await getAllCategories();
+  // finish this then commit
+  res.render("layout", {
+    title: "All categories",
+    path: "partials/categories.ejs",
+    categories,
+  });
 };
 
 const getCategoryPage = (req, res) => {
@@ -10,4 +18,4 @@ const getCategoryForm = (req, res) => {
   res.send("Category form");
 };
 
-export { getAllCategories, getCategoryPage, getCategoryForm };
+export { getCategoriesPage, getCategoryPage, getCategoryForm };
