@@ -1,0 +1,9 @@
+<h1>Categories</h1>
+<section class="categories-grid">
+  <div class="category">
+    <% categories.forEach((category) => { %>
+      <img src="<%= category.image_link %>" width="300" height="300">
+      <p><%= category.name %></p>
+    <% }); %>
+  </div>
+</section>
