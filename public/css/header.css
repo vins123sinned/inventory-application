@@ -126,6 +126,13 @@
   }
 }
 
+@media (max-width: 780px) {
+  /* for dropdowns, prevent scrolling if they're open */
+  body:has(.open) {
+    overflow: hidden;
+  }
+}
+
 @media (min-width: 780px) {
   .header-nav {
     position: static;
