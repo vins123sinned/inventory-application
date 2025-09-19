@@ -1,6 +1,6 @@
 .categories {
   min-height: 80vh;
-  padding: 0 2rem 6rem 2rem;
+  padding: 0 1rem 6rem 1rem;
 }
 
 .categories-heading {
@@ -11,6 +11,8 @@
 .categories-grid {
   display: grid;
   gap: 1.5rem;
+
+  max-width: 25rem;
   margin: auto;
 }
 
@@ -37,4 +39,18 @@
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 0;
+}
+
+@media (min-width: 600px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 50rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .categories-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 75rem;
+  }
 }
