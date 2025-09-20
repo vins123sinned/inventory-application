@@ -7,7 +7,7 @@ const getAllCategories = async () => {
 
 const getCategory = async (categoryId) => {
   const { rows } = await pool.query(
-    "SELECT * FROM categories WHERE id = $1 LIMIT 1",
+    "SELECT * FROM produce WHERE category_id = $1",
     [categoryId],
   );
   return rows;
@@ -18,6 +18,14 @@ const insertCategory = async (categoryName, imageLink) => {
     "INSERT INTO categories (name, image_link) VALUES ($1, $2)",
     [categoryName, imageLink],
   );
+};
+
+const getCategoryFromId = async (categoryId) => {
+  const { rows } = await pool.query(
+    "SELECT * FROM categories WHERE id = $1 LIMIT 1",
+    [categoryId],
+  );
+  return rows[0];
 };
 
 const getAllProduce = async () => {
@@ -57,4 +65,4 @@ const insertProduce = async (
   );
 };
 
-export { getAllCategories };
+export { getAllCategories, getCategory, getCategoryFromId };

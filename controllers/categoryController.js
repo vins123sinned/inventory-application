@@ -1,8 +1,11 @@
-import { getAllCategories } from "../db/queries.js";
+import {
+  getAllCategories,
+  getCategory,
+  getCategoryFromId,
+} from "../db/queries.js";
 
 const getCategoriesPage = async (req, res) => {
   const categories = await getAllCategories();
-  // finish this then commit
   res.render("layout", {
     title: "All categories",
     path: "partials/categories.ejs",
@@ -10,8 +13,16 @@ const getCategoriesPage = async (req, res) => {
   });
 };
 
-const getCategoryPage = (req, res) => {
-  res.send("Produce page");
+const getCategoryPage = async (req, res) => {
+  const { categoryId } = req.params;
+  const category = await getCategoryFromId(categoryId);
+  const produce = await getCategory(categoryId);
+  res.render("layout", {
+    title: category.name,
+    path: "partials/category.ejs",
+    category,
+    produce,
+  });
 };
 
 const getCategoryForm = (req, res) => {
