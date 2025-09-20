@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS produce (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   name VARCHAR ( 255 ) NOT NULL,
   description VARCHAR ( 1000 ) NOT NULL,
-  price_per_pound INTEGER NOT NULL,
+  price_per_pound NUMERIC( 6, 2 ) NOT NULL,
   image_link VARCHAR ( 255 ),
   species_id INTEGER REFERENCES species(id),
   harvest_id INTEGER REFERENCES harvest(id),
