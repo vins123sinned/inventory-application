@@ -1,0 +1,11 @@
+<main>
+  <h1 class="category"><%= category.name %></h1>
+  <section class="category-grid">
+    <% category.forEach((produce) => { %>
+      <div class="produce">
+        <img src="<%= produce.image_link %>" width="300" height="300">
+        <p><%= produce.name %></p>
+      </div>
+    <% }); %>
+  </section>
+</main>
