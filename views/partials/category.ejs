@@ -1,10 +1,11 @@
 <main>
   <h1 class="category"><%= category.name %></h1>
   <section class="category-grid">
-    <% category.forEach((produce) => { %>
+    <% produce.forEach((item) => { %>
       <div class="produce">
-        <img src="<%= produce.image_link %>" width="300" height="300">
-        <p><%= produce.name %></p>
+        <img src="<%= item.image_link %>" width="300" height="300">
+        <p><%= item.name %></p>
+        <p><%= item.price_per_pound %> per lb.</p>
       </div>
     <% }); %>
   </section>
