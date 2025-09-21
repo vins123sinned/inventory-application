@@ -1,5 +1,10 @@
-const getAllProduce = (req, res) => {
-  res.send("All produce");
+const getAllProduce = async (req, res) => {
+  const produce = await getAllProduce();
+  res.render("layout", {
+    title: "All Produce",
+    path: "partials/layout.ejs",
+    produce,
+  });
 };
 
 const getProducePage = (req, res) => {
