@@ -1,0 +1,24 @@
+<main class="list">
+  <h1 class="list-heading"><%= title %></h1>
+  <section class="list-grid">
+    <% if (locals.categories) { %>
+      <% categories.forEach((category) => { %>
+        <a href="/categories/<%= category.id %>" class="list-link">
+          <div class="list-cell">
+            <img src="<%= category.image_link %>" width="300" height="300">
+            <p><%= category.name %></p>
+          </div>
+        </a>
+      <% }); %>
+    <% } else if (locals.produce) { %>
+      <% produce.forEach((item) => { %>
+        <a href="#" class="list-link">
+          <div class="list-cell">
+            <img src="<%= item.image_link %>" width="300" height="300">
+            <p><%= item.name %></p>
+          </div>
+        </a>
+      <% }); %>
+    <% } %>
+  </section>
+</main>

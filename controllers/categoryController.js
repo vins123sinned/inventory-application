@@ -8,7 +8,7 @@ const getCategoriesPage = async (req, res) => {
   const categories = await getAllCategories();
   res.render("layout", {
     title: "All categories",
-    path: "partials/categories.ejs",
+    path: "partials/list.ejs",
     categories,
   });
 };
@@ -19,7 +19,7 @@ const getCategoryPage = async (req, res) => {
   const produce = await getCategory(categoryId);
   res.render("layout", {
     title: category.name,
-    path: "partials/category.ejs",
+    path: "partials/list.ejs",
     category,
     produce,
   });
