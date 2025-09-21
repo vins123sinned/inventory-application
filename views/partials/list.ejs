@@ -10,12 +10,12 @@
           </div>
         </a>
       <% }); %>
-    <% } else if (locals.produce) { %>
-      <% produce.forEach((item) => { %>
+    <% } else if (locals.fruits) { %>
+      <% fruits.forEach((fruit) => { %>
         <a href="#" class="list-link">
           <div class="list-cell">
-            <img src="<%= item.image_link %>" width="300" height="300">
-            <p><%= item.name %></p>
+            <img src="<%= fruit.image_link %>" width="300" height="300">
+            <p><%= fruit.name %></p>
           </div>
         </a>
       <% }); %>

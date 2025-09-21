@@ -3,7 +3,7 @@ import express from "express";
 import path from "node:path";
 import { indexRouter } from "./routes/indexRouter.js";
 import { categoryRouter } from "./routes/categoryRouter.js";
-import { produceRouter } from "./routes/produceRouter.js";
+import { fruitRouter } from "./routes/FruitRouter.js";
 
 const app = express();
 
@@ -15,7 +15,7 @@ app.set("view engine", "ejs");
 
 app.use("/", indexRouter);
 app.use("/categories", categoryRouter);
-app.use("/produce", produceRouter);
+app.use("/fruits", fruitRouter);
 
 app.use((err, req, res, next) => {
   console.log(err);
