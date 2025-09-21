@@ -7,7 +7,7 @@ const getAllCategories = async () => {
 
 const getCategory = async (categoryId) => {
   const { rows } = await pool.query(
-    "SELECT * FROM produce WHERE category_id = $1",
+    "SELECT * FROM fruits WHERE category_id = $1",
     [categoryId],
   );
   return rows;
@@ -28,41 +28,32 @@ const getCategoryFromId = async (categoryId) => {
   return rows[0];
 };
 
-const getAllProduce = async () => {
-  const { rows } = await pool.query("SELECT * FROM produce");
+const getAllFruits = async () => {
+  const { rows } = await pool.query("SELECT * FROM fruits");
   return rows;
 };
 
-const getProduce = async (produceId) => {
+const getFruit = async (fruitId) => {
   const { rows } = await pool.query(
-    "SELECT * FROM produce WHERE id = $1 LIMIT 1",
-    [produceId],
+    "SELECT * FROM fruits WHERE id = $1 LIMIT 1",
+    [fruitId],
   );
   return rows;
 };
 
-const insertProduce = async (
-  produceName,
+const insertFruit = async (
+  fruitName,
   description,
   pricePerPound,
   imageLink,
-  speciesId,
   harvestId,
   categoryId,
 ) => {
   // possibly enter an entry for the harvestProduce table when the time is right
   await pool.query(
-    "INSERT INTO produce (name, description, price_per_pound, image_link, species_id, harvest_id, category_id) VALUES ($1, $2, $3, $4, $5, $6, $7)",
-    [
-      produceName,
-      description,
-      pricePerPound,
-      imageLink,
-      speciesId,
-      harvestId,
-      categoryId,
-    ],
+    "INSERT INTO fruits (name, description, price_per_pound, image_link, species_id, harvest_id, category_id) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+    [fruitName, description, pricePerPound, imageLink, harvestId, categoryId],
   );
 };
 
-export { getAllCategories, getCategory, getCategoryFromId };
+export { getAllCategories, getCategory, getCategoryFromId, getAllFruits };
