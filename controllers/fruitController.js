@@ -1,4 +1,4 @@
-import { getAllFruits, getFruit } from "../db/queries.js";
+import { getAllFruits, getCategoryFromId, getFruit } from "../db/queries.js";
 
 const getFruitsPage = async (req, res) => {
   const fruits = await getAllFruits();
@@ -12,9 +12,11 @@ const getFruitsPage = async (req, res) => {
 const getFruitPage = async (req, res) => {
   const { fruitId } = req.params;
   const fruit = await getFruit(fruitId);
+  const category = await getCategoryFromId(fruit.category_id);
   res.render("layout", {
     title: fruit.name,
     path: "partials/product.ejs",
+    category,
     fruit,
   });
 };
