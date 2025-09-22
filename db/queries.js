@@ -38,7 +38,7 @@ const getFruit = async (fruitId) => {
     "SELECT * FROM fruits WHERE id = $1 LIMIT 1",
     [fruitId],
   );
-  return rows;
+  return rows[0];
 };
 
 const insertFruit = async (
@@ -56,4 +56,10 @@ const insertFruit = async (
   );
 };
 
-export { getAllCategories, getCategory, getCategoryFromId, getAllFruits };
+export {
+  getAllCategories,
+  getCategory,
+  getCategoryFromId,
+  getAllFruits,
+  getFruit,
+};

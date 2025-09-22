@@ -1,4 +1,4 @@
-import { getAllFruits } from "../db/queries.js";
+import { getAllFruits, getFruit } from "../db/queries.js";
 
 const getFruitsPage = async (req, res) => {
   const fruits = await getAllFruits();
@@ -9,8 +9,14 @@ const getFruitsPage = async (req, res) => {
   });
 };
 
-const getFruitPage = (req, res) => {
-  res.send("Fruit");
+const getFruitPage = async (req, res) => {
+  const { fruitId } = req.params;
+  const fruit = await getFruit();
+  res.render("layout", {
+    title: fruit.name,
+    path: "",
+    fruit,
+  });
 };
 
 const getFruitForm = (req, res) => {
