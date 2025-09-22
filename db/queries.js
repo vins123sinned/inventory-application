@@ -28,14 +28,6 @@ const getCategoryFromId = async (categoryId) => {
   return rows[0];
 };
 
-const getHarvestFromId = async (harvestId) => {
-  const { rows } = await pool.query(
-    "SELECT * FROM harvest WHERE id = $1 LIMIT 1",
-    [harvestId],
-  );
-  return rows[0];
-};
-
 const getAllFruits = async () => {
   const { rows } = await pool.query("SELECT * FROM fruits");
   return rows;
@@ -64,9 +56,26 @@ const insertFruit = async (
   );
 };
 
+const getHarvest = async (harvestId) => {
+  const { rows } = await pool.query(
+    "SELECT * FROM fruits WHERE harvest_id = $1",
+    [harvestId],
+  );
+  return rows;
+};
+
+const getHarvestFromId = async (harvestId) => {
+  const { rows } = await pool.query(
+    "SELECT * FROM harvest WHERE id = $1 LIMIT 1",
+    [harvestId],
+  );
+  return rows[0];
+};
+
 export {
   getAllCategories,
   getCategory,
+  getHarvest,
   getCategoryFromId,
   getHarvestFromId,
   getAllFruits,
