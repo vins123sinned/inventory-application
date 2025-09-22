@@ -1,14 +1,15 @@
 <main class="product">
   <section class="product-detail">
     <img src="<%= fruit.image_link %>" alt="Image of <%= fruit.name %>" width="300">
-    <div class="details">
+    <div class="item-details">
       <h1 class="product-heading"><%= fruit.name %></h1>
       <div class="tags">
         <a href="/categories/<%= category.id %>"><p class="tag"><%= category.name %></p></a>
         <a href="/harvest/<%= harvest.id %>"><p class="tag"><%= harvest.name %></p></a>
       </div>
-      <p class="price"><%= fruit.price_per_pound %> per lb.</p>
-      <button type="button">Add to list</button>
+      <p class="price">$<%= fruit.price_per_pound %> per lb.</p>
+      <button type="button" class="add-to-list">Add to list</button>
+      <h2 class="description-heading">Description</h2>
       <p class="description"><%= fruit.description %></p>
     </div>
   </section>
