@@ -11,10 +11,10 @@ const getFruitsPage = async (req, res) => {
 
 const getFruitPage = async (req, res) => {
   const { fruitId } = req.params;
-  const fruit = await getFruit();
+  const fruit = await getFruit(fruitId);
   res.render("layout", {
     title: fruit.name,
-    path: "",
+    path: "partials/product.ejs",
     fruit,
   });
 };

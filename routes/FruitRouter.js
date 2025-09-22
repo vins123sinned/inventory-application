@@ -8,7 +8,7 @@ import {
 const fruitRouter = Router();
 
 fruitRouter.get("/", getFruitsPage);
-fruitRouter.get("/:produceId", getFruitPage);
+fruitRouter.get("/:fruitId", getFruitPage);
 fruitRouter.get("/create", getFruitForm);
 
 export { fruitRouter };
