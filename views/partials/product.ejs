@@ -3,7 +3,10 @@
     <img src="<%= fruit.image_link %>" alt="Image of <%= fruit.name %>" width="300">
     <div class="details">
       <h1 class="product-heading"><%= fruit.name %></h1>
-      <a href="/categories/<%= category.id %>"><p class="category"><%= category.name %></p></a>
+      <div class="tags">
+        <a href="/categories/<%= category.id %>"><p class="tag"><%= category.name %></p></a>
+        <a href="/categories/harvest/<%= harvest.id %>"><p class="tag"><%= harvest.name %></p></a>
+      </div>
       <p class="price"><%= fruit.price_per_pound %> per lb.</p>
       <button type="button">Add to list</button>
       <p class="description"><%= fruit.description %></p>

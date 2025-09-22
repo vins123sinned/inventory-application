@@ -28,6 +28,14 @@ const getCategoryFromId = async (categoryId) => {
   return rows[0];
 };
 
+const getHarvestFromId = async (harvestId) => {
+  const { rows } = await pool.query(
+    "SELECT * FROM harvest WHERE id = $1 LIMIT 1",
+    [harvestId],
+  );
+  return rows[0];
+};
+
 const getAllFruits = async () => {
   const { rows } = await pool.query("SELECT * FROM fruits");
   return rows;
@@ -60,6 +68,7 @@ export {
   getAllCategories,
   getCategory,
   getCategoryFromId,
+  getHarvestFromId,
   getAllFruits,
   getFruit,
 };

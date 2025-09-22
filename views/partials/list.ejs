@@ -12,7 +12,7 @@
       <% }); %>
     <% } else if (locals.fruits) { %>
       <% fruits.forEach((fruit) => { %>
-        <a href="#" class="list-link">
+        <a href="/fruits/<%= fruit.id %>" class="list-link">
           <div class="list-cell">
             <img src="<%= fruit.image_link %>" width="300" height="300">
             <p><%= fruit.name %></p>
