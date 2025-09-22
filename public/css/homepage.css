@@ -50,7 +50,9 @@
   width: fit-content;
   padding: 1.1rem 2rem;
   margin: 2rem 0 3rem 0;
-  transition: background-color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
 }
 
 .call-to-action button:hover {
