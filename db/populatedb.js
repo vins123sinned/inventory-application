@@ -45,7 +45,7 @@ VALUES
 INSERT INTO fruits (name, description, price_per_pound, image_link, harvest_id, category_id) 
 VALUES
   ('Honeycrisp Apple', 'A very delicious apple', 1.28, 'https://en.wikipedia.org/wiki/File:Honeycrisp-Apple.jpg', 3, 1),
-  ('Alice Mangoes', 'A Floridian mango cultivar', 1.83, 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Mango_Alice_Asit_fs.jpg/2560px-Mango_Alice_Asit_fs.jpg', 1, 1);
+  ('Alice Mangoes', 'The Alice mango (Mangifera indica ‘Alice’) is a South Florida cultivar prized for its rich, sweet flavor and fiberless, aromatic flesh. Originating from a ‘Saigon’ seedling planted around 1935 by Fred Herman in South Miami and named after his wife Alice, the tree first fruited in 1940 and was officially recognized in 1950. Though admired for excellent eating quality, it never became a commercial staple because of light and inconsistent yields. The fruit is small to medium, typically under a pound, with smooth yellow-orange skin that may show a soft red blush, a rounded apex, and no beak. Inside, the deep orange flesh is juicy, fragrant, and entirely free of fiber, containing a monoembryonic seed. In Florida, Alice mangoes generally ripen from late June through July. The trees are vigorous and develop a spreading canopy, and preserved specimens are maintained in collections such as the USDA’s Miami station and the University of Florida’s Tropical Research and Education Center.', 1.83, 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Mango_Alice_Asit_fs.jpg/2560px-Mango_Alice_Asit_fs.jpg', 1, 1);
 `;
 
 const main = async () => {

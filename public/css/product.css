@@ -150,5 +150,6 @@
   .product .description {
     max-height: 100%;
     overflow: auto;
+    margin: 0;
   }
 }
