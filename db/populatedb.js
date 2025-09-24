@@ -2,7 +2,7 @@ import { argv } from "node:process";
 import { Client } from "pg";
 
 const SQL = `
-CREATE TABLE IF NOT EXISTS harvest (
+CREATE TABLE IF NOT EXISTS harvests (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY, 
   name VARCHAR ( 255 ) NOT NULL
 );
@@ -19,17 +19,17 @@ CREATE TABLE IF NOT EXISTS fruits (
   description VARCHAR ( 1000 ) NOT NULL,
   price_per_pound NUMERIC ( 6, 2 ) NOT NULL,
   image_link VARCHAR ( 255 ),
-  harvest_id INTEGER REFERENCES harvest(id),
+  harvest_id INTEGER REFERENCES harvests(id),
   category_id INTEGER REFERENCES categories(id)
 );
 
 CREATE TABLE IF NOT EXISTS harvestFruit (
-  harvest_id INT REFERENCES harvest(id),
+  harvest_id INT REFERENCES harvests(id),
   fruit_id INT REFERENCES fruits(id),
   PRIMARY KEY (harvest_id, fruit_id)
 );
 
-INSERT INTO harvest (name)
+INSERT INTO harvests (name)
 VALUES
   ('Spring'),
   ('Summer'),

@@ -1,8 +1,10 @@
 import {
+  getAllCategories,
   getAllFruits,
   getCategoryFromId,
   getFruit,
   getHarvestFromId,
+  getAllHarvests,
 } from "../db/queries.js";
 
 const getFruitsPage = async (req, res) => {
@@ -28,8 +30,15 @@ const getFruitPage = async (req, res) => {
   });
 };
 
-const getFruitForm = (req, res) => {
-  res.send("Fruit form");
+const getFruitForm = async (req, res) => {
+  const categories = await getAllCategories();
+  const harvests = await getAllHarvests();
+  res.render("layout", {
+    title: "Add a Fruit",
+    path: "partials/fruitForm.ejs",
+    categories,
+    harvests,
+  });
 };
 
 export { getFruitsPage, getFruitPage, getFruitForm };
