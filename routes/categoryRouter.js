@@ -8,7 +8,7 @@ import {
 const categoryRouter = Router();
 
 categoryRouter.get("/", getCategoriesPage);
-categoryRouter.get("/:categoryId", getCategoryPage);
 categoryRouter.get("/create", getCategoryForm);
+categoryRouter.get("/:categoryId", getCategoryPage);
 
 export { categoryRouter };

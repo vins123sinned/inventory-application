@@ -11,8 +11,4 @@ const getHarvestPage = async (req, res) => {
   });
 };
 
-const getHarvestForm = (req, res) => {
-  res.send("Harvest form");
-};
-
-export { getHarvestPage, getHarvestForm };
+export { getHarvestPage };
