@@ -9,11 +9,11 @@
       </p>
       <p>
         <label for="price">Price <strong><span aria-label="required" class="required">*</span></strong></label>
-        <input type="number" id="price" name="price" step="0.01" min="0" placeholder="0.00" required>
+        <input type="number" id="price" name="price" step="0.01" min="0" max="9999.99" placeholder="0.00" required>
       </p>
       <p>
         <label for="image_link">Image Link</strong></label>
-        <input type="text" id="image_link" name="image_link" required>
+        <input type="text" id="image_link" name="image_link" maxlength="1000" required>
       </p>
       <fieldset>
         <legend>Harvest</legend>
@@ -39,7 +39,7 @@
       </fieldset>
       <p>
         <label for="description">Description</label>
-        <textarea id="description" name="description"></textarea>
+        <textarea id="description" name="description" maxlength="1000"></textarea>
       </p>
     </section>
     <section>
