@@ -6,6 +6,7 @@ import {
   getFruit,
   getHarvestFromId,
   getAllHarvests,
+  insertFruit,
 } from "../db/queries.js";
 
 //trim whitespace too!
@@ -29,12 +30,12 @@ const validateFruit = [
     .withMessage(`Price ${priceErr}`),
   body("image_link")
     .trim()
-    .optional()
+    .optional({ values: "falsy" })
     .isLength({ min: 1, max: 1000 })
     .withMessage(`Image link ${lengthError(1000)}`),
   body("description")
     .trim()
-    .optional()
+    .optional({ values: "falsy" })
     .isLength({ min: 1, max: 1000 })
     .withMessage(`Description ${lengthError(1000)}`),
 ];
@@ -86,13 +87,14 @@ const postFruitForm = [
         path: "partials/fruitForm.ejs",
         categories,
         harvests,
+        errors: errors.array(),
       });
     }
 
     const { name, price, image_link, harvest, category, description } =
       req.body;
-    // Query here
-    res.redirect("/");
+    await insertFruit(name, price, image_link, harvest, category, description);
+    res.redirect("/fruits");
   },
 ];
 

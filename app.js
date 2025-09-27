@@ -8,9 +8,14 @@ import { harvestRouter } from "./routes/harvestRouter.js";
 
 const app = express();
 
+// parse URL-encoded forms
+app.use(express.urlencoded({ extended: true }));
+
+// serve static files
 const assetsPath = path.join(import.meta.dirname, "public");
 app.use(express.static(assetsPath));
 
+// configure EJS template engine
 app.set("views", path.join(import.meta.dirname, "views"));
 app.set("view engine", "ejs");
 

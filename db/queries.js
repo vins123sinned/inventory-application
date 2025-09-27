@@ -43,13 +43,12 @@ const getFruit = async (fruitId) => {
 
 const insertFruit = async (
   fruitName,
-  description,
   pricePerPound,
   imageLink,
   harvestId,
   categoryId,
+  description,
 ) => {
-  // possibly enter an entry for the harvestProduce table when the time is right
   await pool.query(
     "INSERT INTO fruits (name, description, price_per_pound, image_link, species_id, harvest_id, category_id) VALUES ($1, $2, $3, $4, $5, $6, $7)",
     [fruitName, description, pricePerPound, imageLink, harvestId, categoryId],
@@ -83,6 +82,7 @@ export {
   getCategoryFromId,
   getAllFruits,
   getFruit,
+  insertFruit,
   getAllHarvests,
   getHarvests,
   getHarvestFromId,
