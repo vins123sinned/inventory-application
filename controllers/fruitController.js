@@ -20,12 +20,14 @@ const validateFruit = [
     .trim()
     .notEmpty()
     .withMessage(`Name ${requiredErr}`)
+    .bail()
     .isLength({ min: 1, max: 255 })
     .withMessage(`Name ${lengthError(255)}`),
   body("price")
     .trim()
     .notEmpty()
     .withMessage(`Price ${requiredErr}`)
+    .bail()
     .matches(/^(\d{1,4}(\.\d{1,2})?|\.\d{1,2})$/)
     .withMessage(`Price ${priceErr}`),
   body("image_link")
