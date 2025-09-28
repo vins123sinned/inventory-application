@@ -5,21 +5,21 @@
     <section>
       <p>
         <label for="name">Name <strong><span aria-label="required" class="required">*</span></strong></label>
-        <input type="text" id="name" name="name" maxlength="255" required>
+        <input type="text" id="name" name="name" maxlength="255" value="<%= locals.previousValues && previousValues.name %>" required>
         <span class="error" role="alert" aria-live="polite">
           <%= locals.errors && errors.find(error => error.path === 'name') && errors.find(error => error.path === 'name').msg %>
         </span>
       </p>
       <p>
         <label for="price">Price per pound  <strong><span aria-label="required" class="required">*</span></strong></label>
-        <input type="number" id="price" name="price" step="0.01" min="0" max="9999.99" placeholder="0.00" required>
+        <input type="number" id="price" name="price" step="0.01" min="0" max="9999.99" placeholder="0.00" value="<%= locals.previousValues && previousValues.price %>" required>
         <span class="error" role="alert" aria-live="polite">
           <%= locals.errors && errors.find(error => error.path === 'price') && errors.find(error => error.path === 'price').msg %>
         </span>
       </p>
       <p>
         <label for="image_link">Image Link</strong></label>
-        <input type="text" id="image_link" name="image_link" maxlength="1000" required>
+        <input type="text" id="image_link" name="image_link" maxlength="1000" value="<%= locals.previousValues && previousValues.image_link %>" required>
         <span class="error" role="alert" aria-live="polite">
           <%= locals.errors && errors.find(error => error.path === 'image_link') && errors.find(error => error.path === 'image_link').msg %>
         </span>
@@ -29,7 +29,15 @@
         <ul>
           <% harvests.forEach((harvest) => { %>
             <li>
-              <input type="checkbox" id="<%= harvest.name %>" name="harvest" value="<%= harvest.name %>">
+              <input 
+                type="checkbox" 
+                id="<%= harvest.name %>" 
+                name="harvest" 
+                value="<%= harvest.name %>" 
+                <%= Array.isArray(previousValues?.harvest) 
+                  ? (previousValues.harvest.includes(harvest.name) ? "checked" : "")
+                  : (previousValues?.harvest === harvest.name ? "checked" : "") %>
+              >
               <label for="<%= harvest.name %>"><%= harvest.name %></label>
             </li>
           <% }); %>
@@ -40,7 +48,15 @@
         <ul>
           <% categories.forEach((category) => { %>
             <li>
-              <input type="checkbox" id="<%= category.name %>" name="category" value="<%= category.name %>">
+              <input 
+                type="checkbox" 
+                id="<%= category.name %>" 
+                name="category" 
+                value="<%= category.name %>"
+                <%= Array.isArray(previousValues?.category)
+                  ? (previousValues.category.includes(category.name) ? "checked" : "")
+                  : (previousValues?.category === category.name ? "checked" : "") %>
+              >
               <label for="<%= category.name %>"><%= category.name %></label>
             </li>
           <% }); %>
@@ -48,7 +64,7 @@
       </fieldset>
       <p>
         <label for="description">Description</label>
-        <textarea id="description" name="description" maxlength="1000"></textarea>
+        <textarea id="description" name="description" maxlength="1000"><%= locals.previousValues && previousValues.description %></textarea>
         <span class="error" role="alert" aria-live="polite">
           <%= locals.errors && errors.find(error => error.path === 'description') && errors.find(error => error.path === 'description').msg %>
         </span>

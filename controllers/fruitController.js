@@ -71,6 +71,7 @@ const getFruitForm = async (req, res) => {
     path: "partials/fruitForm.ejs",
     categories,
     harvests,
+    previousValues: undefined,
   });
 };
 
@@ -88,6 +89,7 @@ const postFruitForm = [
         categories,
         harvests,
         errors: errors.array(),
+        previousValues: req.body,
       });
     }
 
