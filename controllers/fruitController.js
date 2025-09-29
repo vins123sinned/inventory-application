@@ -8,7 +8,7 @@ import {
   getAllHarvests,
   insertFruit,
 } from "../db/queries.js";
-import { formatCheckbox } from "../utils.js";
+import { convertToArray, formatCheckbox } from "../utils.js";
 
 //trim whitespace too!
 const requiredErr = "is required";
@@ -55,13 +55,13 @@ const getFruitsPage = async (req, res) => {
 const getFruitPage = async (req, res) => {
   const { fruitId } = req.params;
   const fruit = await getFruit(fruitId);
-  const category = await getCategoryFromId(fruit.category_id);
-  const harvest = await getHarvestFromId(fruit.harvest_id);
+  const categories = await convertToArray(fruit.category_ids, "harvest");
+  const harvests = await convertToArray(fruit.harvest_ids, "category");
   res.render("layout", {
     title: fruit.name,
     path: "partials/product.ejs",
-    category,
-    harvest,
+    categories,
+    harvests,
     fruit,
   });
 };

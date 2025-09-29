@@ -1,4 +1,9 @@
-import { getIdFromHarvest, getIdFromCategory } from "./db/queries.js";
+import {
+  getIdFromHarvest,
+  getIdFromCategory,
+  getHarvestFromId,
+  getCategoryFromId,
+} from "./db/queries.js";
 
 const formatCheckbox = async (data, field) => {
   if (data === undefined) return null;
@@ -12,8 +17,17 @@ const formatCheckbox = async (data, field) => {
       : idsArray.push(await getIdFromCategory(item).id),
   );
 
-  console.log(idsArray);
   return idsArray.toString().replace(/\[/g, "{").replace(/\]/g, "}");
 };
 
-export { formatCheckbox };
+const convertToArray = async (oldArray, field) => {
+  return await Promise.all(
+    oldArray.map(async (id) =>
+      field === "harvest"
+        ? await getHarvestFromId(id)
+        : await getCategoryFromId(id),
+    ),
+  );
+};
+
+export { formatCheckbox, convertToArray };
