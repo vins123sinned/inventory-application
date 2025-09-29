@@ -8,6 +8,7 @@ import {
   getAllHarvests,
   insertFruit,
 } from "../db/queries.js";
+import { formatCheckbox } from "../utils.js";
 
 //trim whitespace too!
 const requiredErr = "is required";
@@ -97,7 +98,14 @@ const postFruitForm = [
 
     const { name, price, image_link, harvest, category, description } =
       req.body;
-    await insertFruit(name, price, image_link, harvest, category, description);
+    await insertFruit(
+      name,
+      price,
+      image_link,
+      formatCheckbox(harvest, "harvest"),
+      formatCheckbox(category, "category"),
+      description,
+    );
     res.redirect("/fruits");
   },
 ];

@@ -28,6 +28,14 @@ const getCategoryFromId = async (categoryId) => {
   return rows[0];
 };
 
+const getIdFromCategory = async (category) => {
+  const { rows } = await pool.query(
+    "SELECT * FROM categories WHERE name = $1 LIMIT 1",
+    [category],
+  );
+  return rows[0];
+};
+
 const getAllFruits = async () => {
   const { rows } = await pool.query("SELECT * FROM fruits");
   return rows;
@@ -45,13 +53,13 @@ const insertFruit = async (
   fruitName,
   pricePerPound,
   imageLink,
-  harvestId,
-  categoryId,
+  harvestIds,
+  categoryIds,
   description,
 ) => {
   await pool.query(
-    "INSERT INTO fruits (name, description, price_per_pound, image_link, species_id, harvest_id, category_id) VALUES ($1, $2, $3, $4, $5, $6, $7)",
-    [fruitName, description, pricePerPound, imageLink, harvestId, categoryId],
+    "INSERT INTO fruits (name, description, price_per_pound, image_link, harvest_ids, category_ids) VALUES ($1, $2, $3, $4, $5, $6)",
+    [fruitName, description, pricePerPound, imageLink, harvestIds, categoryIds],
   );
 };
 
@@ -76,14 +84,24 @@ const getHarvestFromId = async (harvestId) => {
   return rows[0];
 };
 
+const getIdFromHarvest = async (harvest) => {
+  const { rows } = await pool.query(
+    "SELECT * FROM harvests where name = $1 LIMIT 1",
+    [harvest],
+  );
+  return rows[0];
+};
+
 export {
   getAllCategories,
   getCategory,
   getCategoryFromId,
+  getIdFromCategory,
   getAllFruits,
   getFruit,
   insertFruit,
   getAllHarvests,
   getHarvests,
   getHarvestFromId,
+  getIdFromHarvest,
 };
