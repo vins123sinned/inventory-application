@@ -97,6 +97,7 @@ export {
   getCategory,
   getCategoryFromId,
   getIdFromCategory,
+  insertCategory,
   getAllFruits,
   getFruit,
   insertFruit,

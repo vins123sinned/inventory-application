@@ -5,6 +5,11 @@ import {
   getCategoryFromId,
 } from "./db/queries.js";
 
+const requiredErr = "is required";
+const lengthError = (maxLength) =>
+  `must be between 1 and ${maxLength} characters`;
+const priceErr = "must be a number up to 9999.99 with max 2 decimal places";
+
 const formatCheckbox = async (data, field) => {
   if (data === undefined) return null;
   if (!Array.isArray(data))
@@ -30,4 +35,4 @@ const convertToArray = async (oldArray, field) => {
   );
 };
 
-export { formatCheckbox, convertToArray };
+export { requiredErr, lengthError, priceErr, formatCheckbox, convertToArray };

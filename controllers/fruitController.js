@@ -8,13 +8,7 @@ import {
   getAllHarvests,
   insertFruit,
 } from "../db/queries.js";
-import { convertToArray, formatCheckbox } from "../utils.js";
-
-//trim whitespace too!
-const requiredErr = "is required";
-const lengthError = (maxLength) =>
-  `must be between 1 and ${maxLength} characters`;
-const priceErr = "must be a number up to 9999.99 with max 2 decimal places";
+import { convertToArray, formatCheckbox, lengthError, priceErr, requiredErr } from "../utils.js";
 
 const validateFruit = [
   body("name")
