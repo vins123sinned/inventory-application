@@ -22,7 +22,7 @@ app.set("view engine", "ejs");
 app.use("/", indexRouter);
 app.use("/categories", categoryRouter);
 app.use("/fruits", fruitRouter);
-app.use("/harvest", harvestRouter);
+app.use("/harvests", harvestRouter);
 
 app.use((err, req, res, next) => {
   console.log(err);
