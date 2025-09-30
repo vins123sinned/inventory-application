@@ -5,9 +5,9 @@
     <section>
       <p>
         <label for="name">Name <strong><span aria-label="required" class="required">*</span></strong></label>
-        <input type="text" id="name" name="name" maxlength="255" value="<%= locals.previousValues && previousValues.name %>" required>
+        <input type="text" id="name" name="name" maxlength="255" value="<%= locals.previousValues?.name %>" required>
         <span class="error" role="alert" aria-live="polite">
-          <%= locals.errors && errors.find(error => error.path === 'name') && errors.find(error => error.path === 'name').msg %>
+          <%= locals.errors?.find(error => error.path === 'name')?.msg %>
         </span>
       </p>
       <p>
@@ -21,28 +21,27 @@
           min="0" 
           max="9999.99" 
           placeholder="0.00" 
-          value="<%= locals.previousValues && previousValues.price %>" 
+          value="<%= locals.previousValues?.price %>" 
           oninput="this.value = this.value
             .replace(/[^0-9.]/g, '')
             .replace(/(\..*)\./g, '$1')"
           required
         >
         <span class="error" role="alert" aria-live="polite">
-          <%= locals.errors && errors.find(error => error.path === 'price') && errors.find(error => error.path === 'price').msg %>
+          <%= locals.errors?.find(error => error.path === 'price')?.msg %>
         </span>
       </p>
       <p>
-        <label for="image_link">Image Link</strong></label>
+        <label for="image_link">Image Link</label>
         <input 
           type="text" 
           id="image_link" 
           name="image_link" 
           maxlength="1000" 
-          value="<%= locals.previousValues && previousValues.image_link %>" 
-          required
+          value="<%= locals.previousValues?.image_link %>"
         >
         <span class="error" role="alert" aria-live="polite">
-          <%= locals.errors && errors.find(error => error.path === 'image_link') && errors.find(error => error.path === 'image_link').msg %>
+          <%= locals.errors?.find(error => error.path === 'image_link')?.msg %>
         </span>
       </p>
       <fieldset>
@@ -85,9 +84,9 @@
       </fieldset>
       <p>
         <label for="description">Description</label>
-        <textarea id="description" name="description" maxlength="1000"><%= locals.previousValues && previousValues.description %></textarea>
+        <textarea id="description" name="description" maxlength="1000"><%= locals.previousValues?.description %></textarea>
         <span class="error" role="alert" aria-live="polite">
-          <%= locals.errors && errors.find(error => error.path === 'description') && errors.find(error => error.path === 'description').msg %>
+          <%= locals.errors?.find(error => error.path === 'description')?.msg %>
         </span>
       </p>
     </section>

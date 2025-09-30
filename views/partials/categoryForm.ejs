@@ -1,0 +1,33 @@
+<main class="form">
+  <form method="POST" novalidate>
+    <h1><%= title %></h1>
+    <p>Required fields are followed by a <strong><span aria-label="required" class="required">*</span></strong></p>
+    <section>
+      <p>
+        <label for="name">Name <strong><span aria-label="required" class="required">*</span></strong></label>
+        <input type="text" id="name" name="name" maxlength="255" value="<%= locals.previousValues?.name %>" required>
+        <span class="errors" role="alert" aria-live="polite">
+          <%= locals.errors?.find(error => error.path === 'name')?.msg %>
+        </span>
+      </p>
+      <p>
+        <label for="image_link">Image Link</label>
+        <input
+          type="text"
+          id="image_link"
+          name="image_link"
+          maxlength="1000"
+          value="<%= locals.previousValues?.name %>"
+        >
+        <span class="errors" role="alert" aria-live="polite">
+          <%= locals.errors?.find(error => error.path === 'image_link')?.msg %>
+        </span>
+      </p>
+    </section>
+    <section>
+      <p>
+        <button type="submit" class="submit">Add fruit</button>
+      </p>
+    </section>
+  </form>
+</main>
