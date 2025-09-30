@@ -36,18 +36,20 @@ const getHarvestsPage = async (req, res) => {
 const getHarvestPage = async (req, res) => {
   const { harvestId } = req.params;
   const harvest = await getHarvestFromId(harvestId);
-  const fruits = await getHarvests(harvestId);
+  const list = await getHarvests(harvestId);
   res.render("layout", {
     title: `${harvest.name} Fruits`,
     path: "partials/list.ejs",
-    fruits,
+    link: "/fruits/",
+    addText: "Add a harvest",
+    list,
   });
 };
 
 const getHarvestForm = (req, res) => {
   res.render("layout", {
-    title: "Add a category",
-    path: "partials/harvestForm.ejs",
+    title: "Add a harvest",
+    path: "partials/listForm.ejs",
     previousValues: undefined,
   });
 };
@@ -59,8 +61,8 @@ const postHarvestForm = [
 
     if (!errors.isEmpty()) {
       return res.status(400).render("layout", {
-        title: "Add a category",
-        path: "partials/categoryForm.ejs",
+        title: "Add a harvest",
+        path: "partials/listForm.ejs",
         errors: errors.array(),
         previousValues: req.body,
       });

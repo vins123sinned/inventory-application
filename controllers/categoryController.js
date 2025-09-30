@@ -36,19 +36,20 @@ const getCategoriesPage = async (req, res) => {
 const getCategoryPage = async (req, res) => {
   const { categoryId } = req.params;
   const category = await getCategoryFromId(categoryId);
-  const fruits = await getCategory(categoryId);
+  const list = await getCategory(categoryId);
   res.render("layout", {
     title: category.name,
     path: "partials/list.ejs",
-    category,
-    fruits,
+    link: "/fruits/",
+    addText: "Add a fruit",
+    list,
   });
 };
 
 const getCategoryForm = (req, res) => {
   res.render("layout", {
     title: "Add a category",
-    path: "partials/categoryForm.ejs",
+    path: "partials/listForm.ejs",
     previousValues: undefined,
   });
 };
@@ -61,7 +62,7 @@ const postCategoryForm = [
     if (!errors.isEmpty()) {
       return res.status(400).render("layout", {
         title: "Add a category",
-        path: "partials/categoryForm.ejs",
+        path: "partials/listForm.ejs",
         errors: errors.array(),
         previousValues: req.body,
       });

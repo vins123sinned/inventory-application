@@ -13,10 +13,10 @@ const getCategory = async (categoryId) => {
   return rows;
 };
 
-const insertCategory = async (categoryName, imageLink) => {
+const insertCategory = async (name, imageLink) => {
   await pool.query(
     "INSERT INTO categories (name, image_link) VALUES ($1, $2)",
-    [categoryName, imageLink],
+    [name, imageLink],
   );
 };
 
@@ -77,8 +77,8 @@ const getHarvests = async (harvestId) => {
 };
 
 const insertHarvest = async (name, imageLink) => {
-  await pool.query("INSERT INTO harvest (name, image_link) VALUES ($1, $2)", [
-    categoryName,
+  await pool.query("INSERT INTO harvests (name, image_link) VALUES ($1, $2)", [
+    name,
     imageLink,
   ]);
 };
