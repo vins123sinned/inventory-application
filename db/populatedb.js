@@ -4,7 +4,8 @@ import { Client } from "pg";
 const SQL = `
 CREATE TABLE IF NOT EXISTS harvests (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY, 
-  name VARCHAR ( 255 ) NOT NULL
+  name VARCHAR ( 255 ) NOT NULL,
+  image_link VARCHAR ( 255 )
 );
 
 CREATE TABLE IF NOT EXISTS categories (

@@ -76,6 +76,13 @@ const getHarvests = async (harvestId) => {
   return rows;
 };
 
+const insertHarvest = async (name, imageLink) => {
+  await pool.query("INSERT INTO harvest (name, image_link) VALUES ($1, $2)", [
+    categoryName,
+    imageLink,
+  ]);
+};
+
 const getHarvestFromId = async (harvestId) => {
   const { rows } = await pool.query(
     "SELECT * FROM harvests WHERE id = $1 LIMIT 1",
@@ -105,4 +112,5 @@ export {
   getHarvests,
   getHarvestFromId,
   getIdFromHarvest,
+  insertHarvest,
 };
