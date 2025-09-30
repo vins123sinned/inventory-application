@@ -2,13 +2,17 @@ import { body, validationResult } from "express-validator";
 import {
   getAllCategories,
   getAllFruits,
-  getCategoryFromId,
   getFruit,
-  getHarvestFromId,
   getAllHarvests,
   insertFruit,
 } from "../db/queries.js";
-import { convertToArray, formatCheckbox, lengthError, priceErr, requiredErr } from "../utils.js";
+import {
+  convertToArray,
+  formatCheckbox,
+  lengthError,
+  priceErr,
+  requiredErr,
+} from "../utils.js";
 
 const validateFruit = [
   body("name")
@@ -49,8 +53,8 @@ const getFruitsPage = async (req, res) => {
 const getFruitPage = async (req, res) => {
   const { fruitId } = req.params;
   const fruit = await getFruit(fruitId);
-  const categories = await convertToArray(fruit.category_ids, "harvest");
-  const harvests = await convertToArray(fruit.harvest_ids, "category");
+  const categories = await convertToArray(fruit.category_ids, "category");
+  const harvests = await convertToArray(fruit.harvest_ids, "harvest");
   res.render("layout", {
     title: fruit.name,
     path: "partials/product.ejs",

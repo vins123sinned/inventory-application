@@ -47,6 +47,7 @@ const getCategoryForm = (req, res) => {
   res.render("layout", {
     title: "Add a category",
     path: "partials/categoryForm.ejs",
+    previousValues: undefined,
   });
 };
 
@@ -59,6 +60,7 @@ const postCategoryForm = [
       return res.status(400).render("layout", {
         title: "Add a category",
         path: "partials/categoryForm.ejs",
+        errors: errors.array(),
         previousValues: req.body,
       });
     }
@@ -69,4 +71,9 @@ const postCategoryForm = [
   },
 ];
 
-export { getCategoriesPage, getCategoryPage, getCategoryForm };
+export {
+  getCategoriesPage,
+  getCategoryPage,
+  getCategoryForm,
+  postCategoryForm,
+};

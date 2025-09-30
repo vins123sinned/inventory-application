@@ -7,7 +7,7 @@ const getAllCategories = async () => {
 
 const getCategory = async (categoryId) => {
   const { rows } = await pool.query(
-    "SELECT * FROM fruits WHERE category_id = $1",
+    "SELECT * FROM fruits WHERE $1 = ANY (category_ids)",
     [categoryId],
   );
   return rows;
@@ -70,7 +70,7 @@ const getAllHarvests = async () => {
 
 const getHarvests = async (harvestId) => {
   const { rows } = await pool.query(
-    "SELECT * FROM fruits WHERE harvest_id = $1",
+    "SELECT * FROM fruits WHERE $1 = ANY (harvest_ids)",
     [harvestId],
   );
   return rows;

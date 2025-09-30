@@ -6,7 +6,7 @@
       <p>
         <label for="name">Name <strong><span aria-label="required" class="required">*</span></strong></label>
         <input type="text" id="name" name="name" maxlength="255" value="<%= locals.previousValues?.name %>" required>
-        <span class="errors" role="alert" aria-live="polite">
+        <span class="error" role="alert" aria-live="polite">
           <%= locals.errors?.find(error => error.path === 'name')?.msg %>
         </span>
       </p>
@@ -17,9 +17,9 @@
           id="image_link"
           name="image_link"
           maxlength="1000"
-          value="<%= locals.previousValues?.name %>"
+          value="<%= locals.previousValues?.image_link %>"
         >
-        <span class="errors" role="alert" aria-live="polite">
+        <span class="error" role="alert" aria-live="polite">
           <%= locals.errors?.find(error => error.path === 'image_link')?.msg %>
         </span>
       </p>
