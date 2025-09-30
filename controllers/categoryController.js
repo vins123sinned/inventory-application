@@ -23,11 +23,13 @@ const validateCategory = [
 ];
 
 const getCategoriesPage = async (req, res) => {
-  const categories = await getAllCategories();
+  const list = await getAllCategories();
   res.render("layout", {
     title: "All categories",
     path: "partials/list.ejs",
-    categories,
+    link: "/categories/",
+    addText: "Add a category",
+    list,
   });
 };
 

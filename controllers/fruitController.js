@@ -42,11 +42,13 @@ const validateFruit = [
 ];
 
 const getFruitsPage = async (req, res) => {
-  const fruits = await getAllFruits();
+  const list = await getAllFruits();
   res.render("layout", {
     title: "All Fruits",
     path: "partials/list.ejs",
-    fruits,
+    link: "/fruits/",
+    addText: "Add a fruit",
+    list,
   });
 };
 

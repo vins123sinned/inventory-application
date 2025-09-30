@@ -1,36 +1,19 @@
 <main class="list">
   <h1 class="list-heading"><%= title %></h1>
   <section class="list-grid">
-    <% if (locals.categories) { %>
-      <% categories.forEach((category) => { %>
-        <a href="/categories/<%= category.id %>" class="list-link">
-          <div class="list-cell">
-            <img src="<%= category.image_link %>" width="300" height="300">
-            <p><%= category.name %></p>
-          </div>
-        </a>
-      <% }); %>
-      <a href="/categories/create" class="list-link">
-        <div class="list-cell create-card">
-          <img src="/images/cards/add-card.jpg" width="300" alt="A medley of fruits">
-          <p>Add a Category</p>
+    <% list.forEach((item) => { %>
+      <a href="<%= link %><%= item.id %>" class="list-link">
+        <div class="list-cell">
+          <img src="<%= item.image_link %>" width="300" height="300">
+          <p><%= item.name %></p>
         </div>
       </a>
-    <% } else if (locals.fruits) { %>
-      <% fruits.forEach((fruit) => { %>
-        <a href="/fruits/<%= fruit.id %>" class="list-link">
-          <div class="list-cell">
-            <img src="<%= fruit.image_link %>" onerror="this.onerror = null; this.src = '/images/cards/fruit-fallback.png';" width="300" height="300">
-            <p><%= fruit.name %></p>
-          </div>
-        </a>
-      <% }); %>
-      <a href="/fruits/create" class="list-link">
-        <div class="list-cell create-card">
-          <img src="/images/cards/add-card.jpg" width="300" alt="A medley of fruits">
-          <p>Add a Fruit</p>
-        </div>
-      </a>
-    <% } %>
+    <% }); %>
+    <a href="<%= link %>create" class="list-link">
+      <div class="list-cell create-card">
+        <img src="/images/cards/add-card.jpg" width="300" alt="A medley of fruits">
+        <p><%= addText %></p>
+      </div>
+    </a>
   </section>
 </main>
