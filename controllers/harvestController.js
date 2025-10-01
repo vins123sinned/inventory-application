@@ -54,6 +54,17 @@ const getHarvestForm = (req, res) => {
   });
 };
 
+const getEditHarvestForm = async (req, res) => {
+  const { harvestId } = req.params;
+  const harvest = await getHarvestFromId(harvestId);
+  console.log(harvest);
+  res.render("layout", {
+    title: "Add a harvest",
+    path: "partials/listForm.ejs",
+    previousValues: harvest,
+  });
+};
+
 const postHarvestForm = [
   validateHarvest,
   async (req, res) => {
@@ -74,4 +85,10 @@ const postHarvestForm = [
   },
 ];
 
-export { getHarvestsPage, getHarvestPage, getHarvestForm, postHarvestForm };
+export {
+  getHarvestsPage,
+  getHarvestPage,
+  getHarvestForm,
+  getEditHarvestForm,
+  postHarvestForm,
+};
