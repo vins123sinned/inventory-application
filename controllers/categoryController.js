@@ -4,6 +4,7 @@ import {
   getCategory,
   getCategoryFromId,
   insertCategory,
+  updateCategory,
 } from "../db/queries.js";
 import { requiredErr, lengthError } from "../utils.js";
 
@@ -84,10 +85,32 @@ const postCategoryForm = [
   },
 ];
 
+const postEditCategoryForm = [
+  validateCategory,
+  async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).render("layout", {
+        title: "Add a category",
+        path: "partials/listForm.ejs",
+        errors: errors.array(),
+        previousValues: req.body,
+      });
+    }
+
+    const { categoryId } = req.params;
+    const { name, image_link } = req.body;
+    await updateCategory(name, image_link, categoryId);
+    res.redirect("/categories");
+  },
+];
+
 export {
   getCategoriesPage,
   getCategoryPage,
   getCategoryForm,
   getEditCategoryForm,
   postCategoryForm,
+  postEditCategoryForm,
 };

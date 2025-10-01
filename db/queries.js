@@ -20,6 +20,13 @@ const insertCategory = async (name, imageLink) => {
   );
 };
 
+const updateCategory = async (name, imageLink, categoryId) => {
+  await pool.query(
+    "UPDATE categories SET name = $1, image_link = $2 WHERE id = $3",
+    [name, imageLink, categoryId],
+  );
+};
+
 const getCategoryFromId = async (categoryId) => {
   const { rows } = await pool.query(
     "SELECT * FROM categories WHERE id = $1 LIMIT 1",
@@ -105,6 +112,7 @@ export {
   getCategoryFromId,
   getIdFromCategory,
   insertCategory,
+  updateCategory,
   getAllFruits,
   getFruit,
   insertFruit,
