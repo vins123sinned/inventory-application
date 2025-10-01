@@ -54,6 +54,16 @@ const getCategoryForm = (req, res) => {
   });
 };
 
+const getEditCategoryForm = async (req, res) => {
+  const { categoryId } = req.params;
+  const category = await getCategoryFromId(categoryId);
+  res.render("layout", {
+    title: "Add a category",
+    path: "partials/listForm.ejs",
+    previousValues: category,
+  });
+};
+
 const postCategoryForm = [
   validateCategory,
   async (req, res) => {
@@ -78,5 +88,6 @@ export {
   getCategoriesPage,
   getCategoryPage,
   getCategoryForm,
+  getEditCategoryForm,
   postCategoryForm,
 };

@@ -3,6 +3,7 @@ import {
   getCategoriesPage,
   getCategoryForm,
   getCategoryPage,
+  getEditCategoryForm,
   postCategoryForm,
 } from "../controllers/categoryController.js";
 
