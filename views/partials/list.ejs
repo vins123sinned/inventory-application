@@ -2,12 +2,19 @@
   <h1 class="list-heading"><%= title %></h1>
   <section class="list-grid">
     <% list.forEach((item) => { %>
-      <a href="<%= link %><%= item.id %>" class="list-link">
-        <div class="list-cell">
-          <img src="<%= item.image_link %>" width="300" height="300">
-          <p><%= item.name %></p>
-        </div>
-      </a>
+      <div class="cell-container">
+        <a href="<%= link %><%= item.id %>" class="list-link">
+          <div class="list-cell">
+            <img src="<%= item.image_link %>" width="300" height="300">
+            <p><%= item.name %></p>
+          </div>
+        </a>
+        <a href="<%= link %>edit/<%= item.id %>" class="edit-link">
+          <span class="material-symbols-outlined">
+            edit
+          </span>
+        </a>
+      </div>
     <% }); %>
     <a href="<%= link %>create" class="list-link">
       <div class="list-cell create-card">

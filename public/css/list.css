@@ -21,6 +21,10 @@
   margin: auto;
 }
 
+.cell-container {
+  position: relative;
+}
+
 .list-cell {
   border: 1px solid #d8d8d8;
   border-radius: 5px;
@@ -28,7 +32,8 @@
   transition: transform 0.25s ease;
 }
 
-.list-cell:hover {
+.list-cell:hover,
+.edit-link:hover {
   cursor: pointer;
   transform: scale(1.01);
 }
@@ -44,6 +49,32 @@
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 0;
+}
+
+.edit-link {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  background-color: rgb(0, 0, 0, 0.5);
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 0.1rem 0.35rem;
+  transition: transform 0.25s ease;
+}
+
+.cell-container:hover .edit-link {
+  display: block;
+}
+
+.edit-link .material-symbols-outlined {
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.edit-link:active {
+  transform: scale(0.9);
 }
 
 @media (min-width: 600px) {
