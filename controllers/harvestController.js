@@ -4,6 +4,7 @@ import {
   getHarvestFromId,
   getAllHarvests,
   insertHarvest,
+  updateHarvest,
 } from "../db/queries.js";
 import { requiredErr, lengthError } from "../utils.js";
 
@@ -85,10 +86,32 @@ const postHarvestForm = [
   },
 ];
 
+const postEditHarvestForm = [
+  validateHarvest,
+  async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).render("layout", {
+        title: "Add a harvest",
+        path: "partials/listForm.ejs",
+        errors: errors.array(),
+        previousValues: req.body,
+      });
+    }
+
+    const { harvestId } = req.params;
+    const { name, image_link } = req.body;
+    await updateHarvest(name, image_link, harvestId);
+    res.redirect("/harvests");
+  },
+];
+
 export {
   getHarvestsPage,
   getHarvestPage,
   getHarvestForm,
   getEditHarvestForm,
   postHarvestForm,
+  postEditHarvestForm,
 };
