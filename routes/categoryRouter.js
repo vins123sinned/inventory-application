@@ -11,6 +11,7 @@ const categoryRouter = Router();
 categoryRouter.get("/", getCategoriesPage);
 categoryRouter.get("/create", getCategoryForm);
 categoryRouter.post("/create", postCategoryForm);
+categoryRouter.get("/edit/:categoryId", getEditCategoryForm);
 categoryRouter.get("/:categoryId", getCategoryPage);
 
 export { categoryRouter };
