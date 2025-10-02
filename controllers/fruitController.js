@@ -22,7 +22,7 @@ const validateFruit = [
     .bail()
     .isLength({ min: 1, max: 255 })
     .withMessage(`Name ${lengthError(255)}`),
-  body("price")
+  body("price_per_pound")
     .trim()
     .notEmpty()
     .withMessage(`Price ${requiredErr}`)
@@ -78,6 +78,24 @@ const getFruitForm = async (req, res) => {
   });
 };
 
+const getEditFruitForm = async (req, res) => {
+  const { fruitId } = req.params;
+  const fruit = await getFruit(fruitId);
+  const categories = await getAllCategories();
+  const harvests = await getAllHarvests();
+  res.render("layout", {
+    title: "Add a Fruit",
+    path: "partials/fruitForm.ejs",
+    categories,
+    harvests,
+    previousValues: {
+      ...fruit,
+      harvests_array: await convertToArray(fruit.harvest_ids, "harvest"),
+      categories_array: await convertToArray(fruit.category_ids, "category"),
+    },
+  });
+};
+
 const postFruitForm = [
   validateFruit,
   async (req, res) => {
@@ -92,7 +110,11 @@ const postFruitForm = [
         categories,
         harvests,
         errors: errors.array(),
-        previousValues: req.body,
+        previousValues: {
+          ...req.body,
+          harvests: convertToArray(req.body.harvest),
+          categories: convertToArray(req.body.categories),
+        },
       });
     }
 
@@ -110,4 +132,10 @@ const postFruitForm = [
   },
 ];
 
-export { getFruitsPage, getFruitPage, getFruitForm, postFruitForm };
+export {
+  getFruitsPage,
+  getFruitPage,
+  getFruitForm,
+  getEditFruitForm,
+  postFruitForm,
+};

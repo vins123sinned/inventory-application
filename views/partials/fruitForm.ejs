@@ -11,24 +11,24 @@
         </span>
       </p>
       <p>
-        <label for="price">Price per pound  <strong><span aria-label="required" class="required">*</span></strong></label>
+        <label for="price_per_pound">Price per pound  <strong><span aria-label="required" class="required">*</span></strong></label>
         <input 
           type="text" 
           inputmode="decimal"
-          id="price" 
-          name="price" 
+          id="price_per_pound" 
+          name="price_per_pound" 
           step="0.01" 
           min="0" 
           max="9999.99" 
           placeholder="0.00" 
-          value="<%= locals.previousValues?.price %>" 
+          value="<%= locals.previousValues?.price_per_pound %>" 
           oninput="this.value = this.value
             .replace(/[^0-9.]/g, '')
             .replace(/(\..*)\./g, '$1')"
           required
         >
         <span class="error" role="alert" aria-live="polite">
-          <%= locals.errors?.find(error => error.path === 'price')?.msg %>
+          <%= locals.errors?.find(error => error.path === 'price_per_pound')?.msg %>
         </span>
       </p>
       <p>
@@ -45,8 +45,9 @@
         </span>
       </p>
       <fieldset>
-        <legend>Harvest</legend>
+        <legend>Harvests</legend>
         <ul>
+          <% console.log(locals.previousValues?.harvests_array) %>
           <% harvests.forEach((harvest) => { %>
             <li>
               <input 
@@ -54,9 +55,7 @@
                 id="<%= harvest.name %>" 
                 name="harvest" 
                 value="<%= harvest.name %>" 
-                <%= Array.isArray(previousValues?.harvest) 
-                  ? (previousValues.harvest.includes(harvest.name) ? "checked" : "")
-                  : (previousValues?.harvest === harvest.name ? "checked" : "") %>
+                <%= locals.previousValues?.harvests_array?.find((item) => item.name === harvest.name) ? "checked" : "" %>
               >
               <label for="<%= harvest.name %>"><%= harvest.name %></label>
             </li>
@@ -64,7 +63,7 @@
         </ul>
       </fieldset>
       <fieldset>
-        <legend>Category</legend>
+        <legend>Categories</legend>
         <ul>
           <% categories.forEach((category) => { %>
             <li>
@@ -73,9 +72,7 @@
                 id="<%= category.name %>" 
                 name="category" 
                 value="<%= category.name %>"
-                <%= Array.isArray(previousValues?.category)
-                  ? (previousValues.category.includes(category.name) ? "checked" : "")
-                  : (previousValues?.category === category.name ? "checked" : "") %>
+                <%= locals.previousValues?.categories_array.find((item) => item.name === category.name) ? "checked" : "" %>
               >
               <label for="<%= category.name %>"><%= category.name %></label>
             </li>
