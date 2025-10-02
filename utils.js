@@ -10,6 +10,7 @@ const lengthError = (maxLength) =>
   `must be between 1 and ${maxLength} characters`;
 const priceErr = "must be a number up to 9999.99 with max 2 decimal places";
 
+// format array of harvests (['spring', 'summer', ...]) to their respective foreign ids in SQL ([0, 1, ...])
 const formatCheckbox = async (data, field) => {
   if (data === undefined) return null;
   if (!Array.isArray(data))
@@ -25,6 +26,7 @@ const formatCheckbox = async (data, field) => {
   return idsArray.toString().replace(/\[/g, "{").replace(/\]/g, "}");
 };
 
+// Make array of ids ([0, 1, ...]) into an array of harvests (['spring', 'summer', ...])
 const convertToArray = async (oldArray, field) => {
   return await Promise.all(
     oldArray.map(async (id) =>

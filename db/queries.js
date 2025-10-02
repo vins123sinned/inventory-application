@@ -70,6 +70,29 @@ const insertFruit = async (
   );
 };
 
+const updateFruit = async (
+  fruitName,
+  pricePerPound,
+  imageLink,
+  harvestIds,
+  categoryIds,
+  description,
+  fruitId,
+) => {
+  await pool.query(
+    "UPDATE fruits SET name = $1, description = $2, price_per_pound = $3, image_link = $4, harvest_ids = $5, category_ids = $6 WHERE id = $7",
+    [
+      fruitName,
+      description,
+      pricePerPound,
+      imageLink,
+      harvestIds,
+      categoryIds,
+      fruitId,
+    ],
+  );
+};
+
 const getAllHarvests = async () => {
   const { rows } = await pool.query("SELECT * FROM harvests");
   return rows;
