@@ -19,6 +19,9 @@ app.use(express.static(assetsPath));
 app.set("views", path.join(import.meta.dirname, "views"));
 app.set("view engine", "ejs");
 
+// catch React Devtools' source map requests and discard it
+app.get("{*splat}.map", (req, res) => res.sendStatus(404));
+
 app.use("/", indexRouter);
 app.use("/categories", categoryRouter);
 app.use("/fruits", fruitRouter);

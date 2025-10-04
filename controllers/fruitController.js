@@ -5,9 +5,11 @@ import {
   getFruit,
   getAllHarvests,
   insertFruit,
+  updateFruit,
 } from "../db/queries.js";
 import {
-  convertToArray,
+  convertIdToArray,
+  convertReqToArray,
   formatCheckbox,
   lengthError,
   priceErr,
@@ -55,8 +57,8 @@ const getFruitsPage = async (req, res) => {
 const getFruitPage = async (req, res) => {
   const { fruitId } = req.params;
   const fruit = await getFruit(fruitId);
-  const categories = await convertToArray(fruit.category_ids, "category");
-  const harvests = await convertToArray(fruit.harvest_ids, "harvest");
+  const categories = await convertIdToArray(fruit.category_ids, "category");
+  const harvests = await convertIdToArray(fruit.harvest_ids, "harvest");
   res.render("layout", {
     title: fruit.name,
     path: "partials/product.ejs",
@@ -90,8 +92,8 @@ const getEditFruitForm = async (req, res) => {
     harvests,
     previousValues: {
       ...fruit,
-      harvests_array: await convertToArray(fruit.harvest_ids, "harvest"),
-      categories_array: await convertToArray(fruit.category_ids, "category"),
+      harvests_array: await convertIdToArray(fruit.harvest_ids, "harvest"),
+      categories_array: await convertIdToArray(fruit.category_ids, "category"),
     },
   });
 };
@@ -112,21 +114,71 @@ const postFruitForm = [
         errors: errors.array(),
         previousValues: {
           ...req.body,
-          harvests: convertToArray(req.body.harvest),
-          categories: convertToArray(req.body.categories),
+          harvests_array: convertReqToArray(req.body.harvest),
+          categories_array: convertReqToArray(req.body.category),
         },
       });
     }
 
-    const { name, price, image_link, harvest, category, description } =
-      req.body;
+    const {
+      name,
+      price_per_pound,
+      image_link,
+      harvest,
+      category,
+      description,
+    } = req.body;
     await insertFruit(
       name,
-      price,
+      price_per_pound,
       image_link,
-      formatCheckbox(harvest, "harvest"),
-      formatCheckbox(category, "category"),
+      await formatCheckbox(harvest, "harvest"),
+      await formatCheckbox(category, "category"),
       description,
+    );
+    res.redirect("/fruits");
+  },
+];
+
+const postEditFruitForm = [
+  validateFruit,
+  async (req, res) => {
+    const { fruitId } = req.params;
+    const errors = validationResult(req);
+    const categories = await getAllCategories();
+    const harvests = await getAllHarvests();
+
+    if (!errors.isEmpty()) {
+      return res.status(400).render("layout", {
+        title: "Add a fruit",
+        path: "partials/fruitForm.ejs",
+        categories,
+        harvests,
+        errors: errors.array(),
+        previousValues: {
+          ...req.body,
+          harvests_array: convertReqToArray(req.body.harvest),
+          categories_array: convertReqToArray(req.body.category),
+        },
+      });
+    }
+
+    const {
+      name,
+      price_per_pound,
+      image_link,
+      harvest,
+      category,
+      description,
+    } = req.body;
+    await updateFruit(
+      name,
+      price_per_pound,
+      image_link,
+      await formatCheckbox(harvest, "harvest"),
+      await formatCheckbox(category, "category"),
+      description,
+      fruitId,
     );
     res.redirect("/fruits");
   },
@@ -138,4 +190,5 @@ export {
   getFruitForm,
   getEditFruitForm,
   postFruitForm,
+  postEditFruitForm,
 };
