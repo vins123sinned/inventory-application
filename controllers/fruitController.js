@@ -104,6 +104,7 @@ const postFruitForm = [
     const errors = validationResult(req);
     const categories = await getAllCategories();
     const harvests = await getAllHarvests();
+    console.log(convertReqToArray(req.body.harvest));
 
     if (!errors.isEmpty()) {
       return res.status(400).render("layout", {
@@ -114,6 +115,7 @@ const postFruitForm = [
         errors: errors.array(),
         previousValues: {
           ...req.body,
+          // we have find, but this is includes
           harvests_array: convertReqToArray(req.body.harvest),
           categories_array: convertReqToArray(req.body.category),
         },

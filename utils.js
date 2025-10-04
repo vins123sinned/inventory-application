@@ -42,7 +42,7 @@ const convertIdToArray = async (oldArray, field) => {
 };
 
 // make req.body's checkboxes an array if it isn't already
-const convertReqToArray = (data, field) => {
+const convertReqToArray = (data) => {
   if (Array.isArray(data)) return data;
   if (!data) return [];
 

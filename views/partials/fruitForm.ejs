@@ -54,7 +54,7 @@
                 id="<%= harvest.name %>" 
                 name="harvest" 
                 value="<%= harvest.name %>" 
-                <%= locals.previousValues?.harvests_array?.find((item) => item.name === harvest.name) ? "checked" : "" %>
+                <%= (locals.previousValues?.harvests_array?.find((item) => item.name === harvest.name) || locals.previousValues?.harvests_array?.includes(harvest.name)) ? "checked" : "" %>
               >
               <label for="<%= harvest.name %>"><%= harvest.name %></label>
             </li>
@@ -71,7 +71,7 @@
                 id="<%= category.name %>" 
                 name="category" 
                 value="<%= category.name %>"
-                <%= locals.previousValues?.categories_array.find((item) => item.name === category.name) ? "checked" : "" %>
+                <%= (locals.previousValues?.categories_array.find((item) => item.name === category.name) || locals.previousValues?.categories_array.includes(category.name)) ? "checked" : "" %>
               >
               <label for="<%= category.name %>"><%= category.name %></label>
             </li>
