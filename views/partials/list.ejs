@@ -9,11 +9,18 @@
             <p><%= item.name %></p>
           </div>
         </a>
-        <a href="<%= link %>edit/<%= item.id %>" class="edit-link">
-          <span class="material-symbols-outlined">
-            edit
-          </span>
-        </a>
+        <div class="item-options">
+          <a href="<%= link %>edit/<%= item.id %>">
+            <span class="material-symbols-outlined">
+              edit
+            </span>
+          </a>
+          <a href="<%= link %>delete/<%= item.id %>">
+            <span class="material-symbols-outlined">
+              delete
+            </span>
+          </a>
+        </div>
       </div>
     <% }); %>
     <a href="<%= link %>create" class="list-link">
