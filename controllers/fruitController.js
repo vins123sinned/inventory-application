@@ -6,6 +6,7 @@ import {
   getAllHarvests,
   insertFruit,
   updateFruit,
+  deleteFruit,
 } from "../db/queries.js";
 import {
   convertIdToArray,
@@ -80,24 +81,6 @@ const getFruitForm = async (req, res) => {
   });
 };
 
-const getEditFruitForm = async (req, res) => {
-  const { fruitId } = req.params;
-  const fruit = await getFruit(fruitId);
-  const categories = await getAllCategories();
-  const harvests = await getAllHarvests();
-  res.render("layout", {
-    title: "Add a Fruit",
-    path: "partials/fruitForm.ejs",
-    categories,
-    harvests,
-    previousValues: {
-      ...fruit,
-      harvests_array: await convertIdToArray(fruit.harvest_ids, "harvest"),
-      categories_array: await convertIdToArray(fruit.category_ids, "category"),
-    },
-  });
-};
-
 const postFruitForm = [
   validateFruit,
   async (req, res) => {
@@ -141,6 +124,24 @@ const postFruitForm = [
     res.redirect("/fruits");
   },
 ];
+
+const getEditFruitForm = async (req, res) => {
+  const { fruitId } = req.params;
+  const fruit = await getFruit(fruitId);
+  const categories = await getAllCategories();
+  const harvests = await getAllHarvests();
+  res.render("layout", {
+    title: "Add a Fruit",
+    path: "partials/fruitForm.ejs",
+    categories,
+    harvests,
+    previousValues: {
+      ...fruit,
+      harvests_array: await convertIdToArray(fruit.harvest_ids, "harvest"),
+      categories_array: await convertIdToArray(fruit.category_ids, "category"),
+    },
+  });
+};
 
 const postEditFruitForm = [
   validateFruit,
@@ -186,6 +187,25 @@ const postEditFruitForm = [
   },
 ];
 
+const getDeleteFruit = async (req, res) => {
+  const { fruitId } = req.params;
+  const list = await getAllFruits();
+  res.render("layout", {
+    title: "All Fruits",
+    path: "partials/list.ejs",
+    link: "/fruits/",
+    addText: "Add a fruit",
+    deleteLink: `/fruits/delete/${fruitId}`,
+    list,
+  });
+};
+
+const postDeleteFruit = async (req, res) => {
+  const { fruitId } = req.params;
+  await deleteFruit(fruitId);
+  res.redirect("/fruits");
+};
+
 export {
   getFruitsPage,
   getFruitPage,
@@ -193,4 +213,6 @@ export {
   getEditFruitForm,
   postFruitForm,
   postEditFruitForm,
+  getDeleteFruit,
+  postDeleteFruit,
 };

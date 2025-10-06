@@ -30,4 +30,13 @@
       </div>
     </a>
   </section>
+  <% if (locals.deleteLink) { %>
+    <div class="delete-container">
+      <form action="<%= deleteLink %>" method="POST" class="delete-form">
+        <h1>Are you sure?</h1>
+        <p>Deleting is <strong>PERMANENT</strong>, so please be careful before deleting!</p>
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+  <% } %>
 </main>

@@ -93,6 +93,10 @@ const updateFruit = async (
   );
 };
 
+const deleteFruit = async (fruitId) => {
+  await pool.query("DELETE FROM fruits WHERE id = $1", [fruitId]);
+};
+
 const getAllHarvests = async () => {
   const { rows } = await pool.query("SELECT * FROM harvests");
   return rows;
@@ -147,6 +151,7 @@ export {
   getFruit,
   insertFruit,
   updateFruit,
+  deleteFruit,
   getAllHarvests,
   getHarvests,
   getHarvestFromId,
