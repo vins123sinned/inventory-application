@@ -3,8 +3,10 @@ import {
   getCategoriesPage,
   getCategoryForm,
   getCategoryPage,
+  getDeleteCategory,
   getEditCategoryForm,
   postCategoryForm,
+  postDeleteCategory,
   postEditCategoryForm,
 } from "../controllers/categoryController.js";
 
@@ -15,6 +17,8 @@ categoryRouter.get("/create", getCategoryForm);
 categoryRouter.post("/create", postCategoryForm);
 categoryRouter.get("/edit/:categoryId", getEditCategoryForm);
 categoryRouter.post("/edit/:categoryId", postEditCategoryForm);
+categoryRouter.get("/delete/:categoryId", getDeleteCategory);
+categoryRouter.post("/delete/:categoryId", postDeleteCategory);
 categoryRouter.get("/:categoryId", getCategoryPage);
 
 export { categoryRouter };
