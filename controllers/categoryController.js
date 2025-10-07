@@ -1,5 +1,6 @@
 import { body, validationResult } from "express-validator";
 import {
+  deleteCategory,
   getAllCategories,
   getCategory,
   getCategoryFromId,
@@ -114,6 +115,25 @@ const postEditCategoryForm = [
   },
 ];
 
+const getDeleteCategory = async (req, res) => {
+  const { categoryId } = req.params;
+  const list = await getAllCategories();
+  res.render("layout", {
+    title: "All categories",
+    path: "partials/list.ejs",
+    link: "/categories/",
+    addText: "Add a category",
+    deleteLink: `/categories/delete/${categoryId}`,
+    list,
+  });
+};
+
+const postDeleteCategory = async (req, res) => {
+  const { categoryId } = req.params;
+  await deleteCategory(categoryId);
+  res.redirect("/categories/");
+};
+
 export {
   getCategoriesPage,
   getCategoryPage,
@@ -121,4 +141,6 @@ export {
   getEditCategoryForm,
   postCategoryForm,
   postEditCategoryForm,
+  getDeleteCategory,
+  postDeleteCategory,
 };

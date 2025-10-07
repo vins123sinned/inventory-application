@@ -27,6 +27,14 @@ const updateCategory = async (name, imageLink, categoryId) => {
   );
 };
 
+const deleteCategory = async (categoryId) => {
+  await pool.query(
+    "UPDATE fruits SET category_ids = ARRAY_REMOVE(category_ids, $1) WHERE $1 = ANY(category_ids)",
+    [categoryId],
+  );
+  await pool.query("DELETE FROM categories WHERE id = $1", [categoryId]);
+};
+
 const getCategoryFromId = async (categoryId) => {
   const { rows } = await pool.query(
     "SELECT * FROM categories WHERE id = $1 LIMIT 1",
@@ -155,6 +163,7 @@ export {
   getCategoryFromName,
   insertCategory,
   updateCategory,
+  deleteCategory,
   getAllFruits,
   getFruit,
   insertFruit,
