@@ -52,6 +52,7 @@ const getCategoryForm = (req, res) => {
     title: "Add a category",
     path: "partials/listForm.ejs",
     link: "/categories/",
+    submitText: "Add category",
     previousValues: undefined,
   });
 };
@@ -63,6 +64,7 @@ const getEditCategoryForm = async (req, res) => {
     title: "Add a category",
     path: "partials/listForm.ejs",
     link: "/categories/",
+    submitText: "Update category",
     previousValues: category,
   });
 };
@@ -77,6 +79,7 @@ const postCategoryForm = [
         title: "Add a category",
         path: "partials/listForm.ejs",
         link: "/categories/",
+        submitText: "Add category",
         errors: errors.array(),
         previousValues: req.body,
       });
@@ -98,6 +101,7 @@ const postEditCategoryForm = [
         title: "Add a category",
         path: "partials/listForm.ejs",
         link: "/categories/",
+        submitText: "Update category",
         errors: errors.array(),
         previousValues: req.body,
       });
