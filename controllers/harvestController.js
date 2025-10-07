@@ -5,6 +5,7 @@ import {
   getAllHarvests,
   insertHarvest,
   updateHarvest,
+  deleteHarvest,
 } from "../db/queries.js";
 import { requiredErr, lengthError } from "../utils.js";
 
@@ -115,6 +116,25 @@ const postEditHarvestForm = [
   },
 ];
 
+const getDeleteHarvest = async (req, res) => {
+  const { harvestId } = req.params;
+  const list = await getAllHarvests();
+  res.render("layout", {
+    title: "All Harvests",
+    path: "partials/list.ejs",
+    link: "/harvests/",
+    addText: "Add a harvest",
+    deleteLink: `/harvests/delete/${harvestId}`,
+    list,
+  });
+};
+
+const postDeleteHarvest = async (req, res) => {
+  const { harvestId } = req.params;
+  await deleteHarvest(harvestId);
+  res.redirect("/harvests/");
+};
+
 export {
   getHarvestsPage,
   getHarvestPage,
@@ -122,4 +142,6 @@ export {
   getEditHarvestForm,
   postHarvestForm,
   postEditHarvestForm,
+  getDeleteHarvest,
+  postDeleteHarvest,
 };

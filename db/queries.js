@@ -7,7 +7,7 @@ const getAllCategories = async () => {
 
 const getCategory = async (categoryId) => {
   const { rows } = await pool.query(
-    "SELECT * FROM fruits WHERE $1 = ANY (category_ids)",
+    "SELECT * FROM fruits WHERE $1 = ANY(category_ids)",
     [categoryId],
   );
   return rows;
@@ -124,6 +124,14 @@ const updateHarvest = async (name, imageLink, harvestId) => {
   );
 };
 
+const deleteHarvest = async (harvestId) => {
+  await pool.query(
+    "UPDATE fruits SET harvest_ids = ARRAY_REMOVE(harvest_ids, $1) WHERE $1 = ANY(harvest_ids)",
+    [harvestId],
+  );
+  await pool.query("DELETE FROM harvests WHERE id = $1", [harvestId]);
+};
+
 const getHarvestFromId = async (harvestId) => {
   const { rows } = await pool.query(
     "SELECT * FROM harvests WHERE id = $1 LIMIT 1",
@@ -158,4 +166,5 @@ export {
   getHarvestFromName,
   insertHarvest,
   updateHarvest,
+  deleteHarvest,
 };
