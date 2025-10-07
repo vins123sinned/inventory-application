@@ -77,15 +77,43 @@ main.form {
   padding: 0.25rem;
 }
 
-.form .submit {
+.form-options {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin: 2.5rem 0 0 auto;
+}
+
+.form-options * {
   display: block;
   font-size: 1rem;
-  color: #fff;
-  background-color: #718664;
+  line-height: 1.3;
   border: none;
   border-radius: 5px;
   padding: 0.5rem 1.25rem;
-  margin: 2.5rem 0 0 auto;
+}
+
+.form-options *:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+.form-options .cancel {
+  border: 1px solid #c8c8c8;
+  transition: transform 0.25s ease;
+}
+
+.form-options .cancel:hover {
+  transform: scale(1.03);
+}
+
+.form-options .cancel:active {
+  transform: scale(0.97);
+}
+
+.form-options .submit {
+  color: #fff;
+  background-color: #718664;
+  border: 1px solid #718664;
 }
 
 /* error styling */

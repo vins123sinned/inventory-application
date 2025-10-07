@@ -26,7 +26,7 @@ const validateHarvest = [
 const getHarvestsPage = async (req, res) => {
   const list = await getAllHarvests();
   res.render("layout", {
-    title: "All categories",
+    title: "All harvests",
     path: "partials/list.ejs",
     link: "/harvests/",
     addText: "Add a harvest",
@@ -51,6 +51,7 @@ const getHarvestForm = (req, res) => {
   res.render("layout", {
     title: "Add a harvest",
     path: "partials/listForm.ejs",
+    link: "/harvests/",
     previousValues: undefined,
   });
 };
@@ -62,6 +63,7 @@ const getEditHarvestForm = async (req, res) => {
   res.render("layout", {
     title: "Add a harvest",
     path: "partials/listForm.ejs",
+    link: "/harvests/",
     previousValues: harvest,
   });
 };
@@ -75,6 +77,7 @@ const postHarvestForm = [
       return res.status(400).render("layout", {
         title: "Add a harvest",
         path: "partials/listForm.ejs",
+        link: "/harvests/",
         errors: errors.array(),
         previousValues: req.body,
       });
@@ -95,6 +98,7 @@ const postEditHarvestForm = [
       return res.status(400).render("layout", {
         title: "Add a harvest",
         path: "partials/listForm.ejs",
+        link: "/harvests/",
         errors: errors.array(),
         previousValues: req.body,
       });
