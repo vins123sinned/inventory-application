@@ -43,7 +43,7 @@ const getHarvestPage = async (req, res) => {
     title: `${harvest.name} Fruits`,
     path: "partials/list.ejs",
     link: "/fruits/",
-    addText: "Add a harvest",
+    addText: "Add a fruit",
     list,
   });
 };
