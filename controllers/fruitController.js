@@ -7,6 +7,10 @@ import {
   insertFruit,
   updateFruit,
   deleteFruit,
+  getHarvestFromId,
+  getHarvests,
+  getCategory,
+  getCategoryFromId,
 } from "../db/queries.js";
 import {
   convertIdToArray,
@@ -88,7 +92,6 @@ const postFruitForm = [
     const errors = validationResult(req);
     const categories = await getAllCategories();
     const harvests = await getAllHarvests();
-    console.log(convertReqToArray(req.body.harvest));
 
     if (!errors.isEmpty()) {
       return res.status(400).render("layout", {
@@ -192,22 +195,51 @@ const postEditFruitForm = [
 ];
 
 const getDeleteFruit = async (req, res) => {
+  const { route, id } = req.query;
   const { fruitId } = req.params;
-  const list = await getAllFruits();
-  res.render("layout", {
-    title: "All Fruits",
-    path: "partials/list.ejs",
-    link: "/fruits/",
-    addText: "Add a fruit",
-    deleteLink: `/fruits/delete/${fruitId}`,
-    list,
-  });
+
+  // keep same page when showing delete
+  if (route) {
+    const item =
+      route === "harvests"
+        ? await getHarvestFromId(id)
+        : await getCategoryFromId(id);
+    const list =
+      route === "harvests" ? await getHarvests(id) : await getCategory(id);
+    res.render("layout", {
+      title: route === "harvests" ? `${item.name} Fruits` : item.name,
+      path: "partials/list.ejs",
+      link: "/fruits/",
+      addText: "Add a fruit",
+      deleteLink: `/fruits/delete/${fruitId}`,
+      cancelLink: `/${route}/${item.id}`,
+      query: `?route=${route}&id=${item.id}`,
+      list,
+    });
+  } else {
+    const list = await getAllFruits();
+    res.render("layout", {
+      title: "All Fruits",
+      path: "partials/list.ejs",
+      link: "/fruits/",
+      addText: "Add a fruit",
+      deleteLink: `/fruits/delete/${fruitId}`,
+      list,
+    });
+  }
 };
 
 const postDeleteFruit = async (req, res) => {
+  const { route, id } = req.query;
   const { fruitId } = req.params;
   await deleteFruit(fruitId);
-  res.redirect("/fruits");
+  console.log(route);
+
+  if (route) {
+    res.redirect(`/${route}/${id}`);
+  } else {
+    res.redirect("/fruits");
+  }
 };
 
 export {

@@ -44,6 +44,7 @@ const getCategoryPage = async (req, res) => {
     path: "partials/list.ejs",
     link: "/fruits/",
     addText: "Add a fruit",
+    query: `?route=categories&id=${category.id}`,
     list,
   });
 };

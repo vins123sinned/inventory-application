@@ -44,6 +44,7 @@ const getHarvestPage = async (req, res) => {
     path: "partials/list.ejs",
     link: "/fruits/",
     addText: "Add a fruit",
+    query: `?route=harvests&id=${harvest.id}`,
     list,
   });
 };
@@ -61,7 +62,6 @@ const getHarvestForm = (req, res) => {
 const getEditHarvestForm = async (req, res) => {
   const { harvestId } = req.params;
   const harvest = await getHarvestFromId(harvestId);
-  console.log(harvest);
   res.render("layout", {
     title: "Update Harvest",
     path: "partials/listForm.ejs",

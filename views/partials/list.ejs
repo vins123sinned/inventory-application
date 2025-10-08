@@ -15,7 +15,7 @@
               edit
             </span>
           </a>
-          <a href="<%= link %>delete/<%= item.id %>">
+          <a href="<%= link %>delete/<%= item.id %><%= locals.query %>">
             <span class="material-symbols-outlined">
               delete
             </span>
@@ -32,11 +32,11 @@
   </section>
   <% if (locals.deleteLink) { %>
     <div class="delete-container">
-      <form action="<%= deleteLink %>" method="POST" class="delete-form">
+      <form action="<%= deleteLink %><%= locals.query %>" method="POST" class="delete-form">
         <h1>Are You Sure?</h1>
         <p>Deleting is <strong>PERMANENT</strong>, so please be careful before deleting!</p>
         <div class="form-options">
-          <a href="<%= link %>" class="cancel">Cancel</a>
+          <a href="<%= locals.cancelLink || link %>" class="cancel">Cancel</a>
           <button type="submit" class="submit">Delete</button>
         </div>
       </form>
