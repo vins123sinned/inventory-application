@@ -7,6 +7,7 @@ import {
 const authenticationRouter = Router();
 
 authenticationRouter.get("{*splat}/edit/{*splat}", getAuthentication);
+authenticationRouter.get("{*splat}/delete/{*splat}", getAuthentication);
 authenticationRouter.post("/auth", postAuthentication);
 
 export { authenticationRouter };
