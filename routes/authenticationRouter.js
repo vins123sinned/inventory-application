@@ -1,8 +1,12 @@
 import { Router } from "express";
-import { getAuthentication } from "../controllers/authenticationController.js";
+import {
+  getAuthentication,
+  postAuthentication,
+} from "../controllers/authenticationController.js";
 
 const authenticationRouter = Router();
 
 authenticationRouter.get("{*splat}/edit/{*splat}", getAuthentication);
+authenticationRouter.post("/auth", postAuthentication);
 
 export { authenticationRouter };
