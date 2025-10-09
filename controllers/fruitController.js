@@ -79,7 +79,7 @@ const getFruitForm = async (req, res) => {
   res.render("layout", {
     title: "Add a Fruit",
     path: "partials/fruitForm.ejs",
-    submitText: "Add fruit",
+    submitText: "Add",
     categories,
     harvests,
     previousValues: undefined,
@@ -97,7 +97,7 @@ const postFruitForm = [
       return res.status(400).render("layout", {
         title: "Add a fruit",
         path: "partials/fruitForm.ejs",
-        submitText: "Add fruit",
+        submitText: "Add",
         categories,
         harvests,
         errors: errors.array(),
@@ -136,9 +136,9 @@ const getEditFruitForm = async (req, res) => {
   const categories = await getAllCategories();
   const harvests = await getAllHarvests();
   res.render("layout", {
-    title: "Add a Fruit",
+    title: "Update Fruit",
     path: "partials/fruitForm.ejs",
-    submitText: "Update fruit",
+    submitText: "Update",
     categories,
     harvests,
     previousValues: {
@@ -159,9 +159,9 @@ const postEditFruitForm = [
 
     if (!errors.isEmpty()) {
       return res.status(400).render("layout", {
-        title: "Add a Fruit",
+        title: "Update Fruit",
         path: "partials/fruitForm.ejs",
-        submitText: "Update fruit",
+        submitText: "Update",
         categories,
         harvests,
         errors: errors.array(),

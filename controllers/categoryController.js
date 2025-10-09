@@ -54,7 +54,7 @@ const getCategoryForm = (req, res) => {
     title: "Add a category",
     path: "partials/listForm.ejs",
     link: "/categories/",
-    submitText: "Add category",
+    submitText: "Add",
     previousValues: undefined,
   });
 };
@@ -63,10 +63,10 @@ const getEditCategoryForm = async (req, res) => {
   const { categoryId } = req.params;
   const category = await getCategoryFromId(categoryId);
   res.render("layout", {
-    title: "Add a category",
+    title: "Update category",
     path: "partials/listForm.ejs",
     link: "/categories/",
-    submitText: "Update category",
+    submitText: "Update",
     previousValues: category,
   });
 };
@@ -81,7 +81,7 @@ const postCategoryForm = [
         title: "Add a category",
         path: "partials/listForm.ejs",
         link: "/categories/",
-        submitText: "Add category",
+        submitText: "Add",
         errors: errors.array(),
         previousValues: req.body,
       });
@@ -100,10 +100,10 @@ const postEditCategoryForm = [
 
     if (!errors.isEmpty()) {
       return res.status(400).render("layout", {
-        title: "Add a category",
+        title: "Update category",
         path: "partials/listForm.ejs",
         link: "/categories/",
-        submitText: "Update category",
+        submitText: "Update",
         errors: errors.array(),
         previousValues: req.body,
       });

@@ -54,7 +54,7 @@ const getHarvestForm = (req, res) => {
     title: "Add a Harvest",
     path: "partials/listForm.ejs",
     link: "/harvests/",
-    submitText: "Add harvest",
+    submitText: "Add",
     previousValues: undefined,
   });
 };
@@ -65,7 +65,7 @@ const getEditHarvestForm = async (req, res) => {
   res.render("layout", {
     title: "Update Harvest",
     path: "partials/listForm.ejs",
-    submitText: "Update harvest",
+    submitText: "Update",
     link: "/harvests/",
     previousValues: harvest,
   });
@@ -81,7 +81,7 @@ const postHarvestForm = [
         title: "Add a Harvest",
         path: "partials/listForm.ejs",
         link: "/harvests/",
-        submitText: "Add harvest",
+        submitText: "Add",
         errors: errors.array(),
         previousValues: req.body,
       });
@@ -100,10 +100,10 @@ const postEditHarvestForm = [
 
     if (!errors.isEmpty()) {
       return res.status(400).render("layout", {
-        title: "Add a Harvest",
+        title: "Update Harvest",
         path: "partials/listForm.ejs",
         link: "/harvests/",
-        submitText: "Update harvest",
+        submitText: "Update",
         errors: errors.array(),
         previousValues: req.body,
       });
