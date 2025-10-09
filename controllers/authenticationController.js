@@ -12,6 +12,7 @@ const validateAuthentication = [
 
 const getAuthentication = (req, res, next) => {
   const { password } = req.query;
+  const previousPath = req.headers.referer.slice(22);
 
   if (password === "123") {
     next();
@@ -20,6 +21,7 @@ const getAuthentication = (req, res, next) => {
       title: "Enter Password",
       path: "partials/authentication.ejs",
       redirect: req.path,
+      previousPath: previousPath,
       errors: !password
         ? undefined
         : [
@@ -42,6 +44,7 @@ const postAuthentication = [
         title: "Enter Password",
         path: "partials/authentication.ejs",
         redirect: req.body.redirect,
+        previousPath: req.body.previousPath,
         errors: errors.array(),
       });
     }
