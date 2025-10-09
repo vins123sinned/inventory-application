@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS fruits (
   name VARCHAR ( 255 ) NOT NULL,
   description VARCHAR ( 1000 ) NOT NULL,
   price_per_pound NUMERIC ( 6, 2 ) NOT NULL,
-  image_link VARCHAR ( 255 ),
+  image_link VARCHAR ( 1000 ),
   harvest_ids INTEGER ARRAY,
   category_ids INTEGER ARRAY
 );
