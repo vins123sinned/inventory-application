@@ -1,0 +1,23 @@
+<main class="authentication">
+  <form method="POST" class="authentication-form" novalidate>
+    <h1>Enter Password</h1>
+    <p>You need to enter a password in order to update or delete!</p>
+    <section>
+      // do this!
+      <input type="hidden" name="redirect" value="">
+      <p>
+        <label for="password">Password</label>
+        <input type="text" id="password" name="password" maxlength="255" value="<% locals.previousValues?.password %>" required>
+        <span class="error" role="alert" aria-live="polite">
+          <%= locals.errors?.find(error => error.path === 'password')?.msg %>
+        </span>
+      </p>
+    </section>
+    <section>
+      <p>
+        <a href="/" class="cancel">Cancel</a>
+        <button type="submit" class="submit">Enter</button>
+      </p>
+    </section>
+  </form>
+</main>

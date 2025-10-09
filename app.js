@@ -5,6 +5,7 @@ import { indexRouter } from "./routes/indexRouter.js";
 import { categoryRouter } from "./routes/categoryRouter.js";
 import { fruitRouter } from "./routes/fruitRouter.js";
 import { harvestRouter } from "./routes/harvestRouter.js";
+import { authenticationRouter } from "./routes/authenticationRouter.js";
 
 const app = express();
 
@@ -21,6 +22,9 @@ app.set("view engine", "ejs");
 
 // catch React Devtools' source map requests and discard it
 app.get("{*splat}.map", (req, res) => res.sendStatus(404));
+
+// authentication
+app.use("/", authenticationRouter);
 
 app.use("/", indexRouter);
 app.use("/categories", categoryRouter);
