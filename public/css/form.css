@@ -2,6 +2,10 @@ main.form.list-form {
   padding: 12rem clamp(1rem, 6vw, 3rem) 13rem clamp(1rem, 6vw, 3rem);
 }
 
+main.form.authentication {
+  padding: 13rem clamp(1rem, 6vw, 3rem) 16rem clamp(1rem, 6vw, 3rem);
+}
+
 main.form {
   padding: 3rem clamp(1rem, 6vw, 3rem) 8rem clamp(1rem, 6vw, 3rem);
 }
