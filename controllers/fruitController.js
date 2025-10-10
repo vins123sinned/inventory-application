@@ -233,7 +233,6 @@ const postDeleteFruit = async (req, res) => {
   const { route, id } = req.query;
   const { fruitId } = req.params;
   await deleteFruit(fruitId);
-  console.log(route);
 
   if (route) {
     res.redirect(`/${route}/${id}`);

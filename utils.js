@@ -12,7 +12,6 @@ const priceErr = "must be a number up to 9999.99 with max 2 decimal places";
 
 // format array of harvests (['spring', 'summer', ...]) to their respective foreign ids in SQL ([0, 1, ...])
 const formatCheckbox = async (data, field) => {
-  console.log("Data is array: " + Array.isArray(data) + ` (${data})`);
   if (!data) return null;
   if (!Array.isArray(data))
     return `{${field === "harvest" ? (await getHarvestFromName(data)).id : (await getCategoryFromName(data)).id}}`;
