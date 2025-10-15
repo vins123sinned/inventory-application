@@ -1,0 +1,25 @@
+.attributions {
+  min-height: 85vh;
+  text-align: center;
+  font-size: 1.25rem;
+  max-width: 75ch;
+  line-height: 1.6;
+  margin: 0 auto 5rem auto;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+}
+
+.attributions h1 {
+  font-size: clamp(2.25rem, 8vw, 3.5rem);
+}
+
+.attributions ul {
+  padding: 2rem 0;
+}
+
+.attributions li {
+  margin-bottom: 1rem;
+}
+
+.attributions a {
+  text-decoration: underline;
+}
