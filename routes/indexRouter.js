@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { getAboutPage, getHomepage } from "../controllers/indexController.js";
+import { getAttributionPage, getHomepage } from "../controllers/indexController.js";
 
 const indexRouter = Router();
 
 indexRouter.get("/", getHomepage);
-indexRouter.get("/about", getAboutPage);
+indexRouter.get("/attributions", getAttributionPage);
 
 export { indexRouter };

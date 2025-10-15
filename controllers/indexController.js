@@ -5,8 +5,11 @@ const getHomepage = (req, res) => {
   });
 };
 
-const getAboutPage = (req, res) => {
-  res.send("layout");
+const getAttributionPage = (req, res) => {
+  res.render("layout", {
+    title: "Attributions",
+    path: "partials/attributions.ejs",
+  });
 };
 
-export { getHomepage, getAboutPage };
+export { getHomepage, getAttributionPage };
